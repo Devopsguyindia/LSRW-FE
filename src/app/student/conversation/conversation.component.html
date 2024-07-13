@@ -1,0 +1,97 @@
+<div class="col-md-9 rt-section-qu">
+  <div class="rt-quest-wrapp">
+    <div class="match_name_wrapp">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="mat-name">Conversation</div>
+        </div>
+        <div class="col-md-7">
+          <div class="match-wrapp">
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'hi-IN'}" data-toggle="tooltip" (click)="mainservice.language_code = 'hi-IN';mainservice.voice_code='Google हिन्दी'"  data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/india-flag-round-icon-64.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-GB'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-GB';mainservice.voice_code='Google UK English Female'"  data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/match-flag1.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-US'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-US';mainservice.voice_code='Google US English'" data-placement="top" title="" data-original-title="USA">
+                <img alt="" src="../../../assets/img/match-flag2.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir last-two">
+              <a class="active-match" data-toggle="tooltip" data-placement="top" title="" data-original-title="Audio">
+                <img alt="" src="../../../assets/img/audio-match.png" title="Index">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 0.7" >
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.7}"  data-placement="top" title="" (click) = "snell = 1" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 1" >
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.3}"  data-placement="top" title="" (click) = "snell = 1 - 0.3" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item1 of cardData; index as i1;">
+    <div class="quest-inner"  *ngIf="i1 == count">
+      <div class="ques_two-inner">
+        <div class="conversation-wrapp">
+            <div class="conser-inner" *ngFor="let item of item1.content; index as i;">
+              <div class="conser-lt-chat-box" *ngIf="item.lsentence">
+                <div class="lt_cht_name">{{item.lname}}</div>
+                <div class="conser-lt-chat-txt"  [ngClass]="{'act_chat_green': item.act_sen}">
+                  {{item.lsentence}}
+                  <span><img src="../../../assets/img/lt-arrow-chat.png" /></span>
+                  
+                </div>
+                <div class="conver-lt-img">
+                  <span class="chat_img" [ngStyle]="{'background-image':'url(' + image_url + '' + item.lImg + ')'}"></span>
+                </div>
+              </div>
+              <div class="conser-rt-chat-box" *ngIf="item.rsentence">
+                <div class="rt_cht_name">{{item.rname}}</div>
+                <div class="conser-rt-chat-txt" [ngClass]="{'act_chat_blue': item.act_sen1}">
+                  {{item.rsentence}}
+                  <span><img src="../../../assets/img/rt-arrow-chat.png" /></span>
+                </div>
+                <div class="conver-rt-img">
+                  <span class="chat_img" [ngStyle]="{'background-image':'url(' + image_url + '' + item.rImg + ')'}"></span>
+                </div>
+              </div>
+            </div>
+          <div class="chat_inner_all conver_chat">
+            <!-- <input type="text" class="form-control" placeholder="Enter Text..." > -->
+            <button class="send-btn" (click)="conversation(item1.content[0], i1);count1=1;"><img alt="" src="../../../assets/img/audio_nat.png" title=""></button>
+          </div>
+          <div class="chat_inner_all conver_chat">
+            <button class="send-btn" (click)="cardData[count].stopConv=!cardData[count].stopConv"><i class="fa fa-pause" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="pagin_wrapper">
+    <div class="row">
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == 0}"  [disabled]="count == 0" (click)="count=count-1;subProgress()" type="submit">Previous</button>
+      </div>
+      <div class="col-md-8">
+        <progress-bar [progress]="progress" [color]="'#22cf4b'">
+        </progress-bar>
+      </div>
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == cardData.length-1}" (click)="addProgress();count=count+1" [disabled]="count == cardData.length-1"  type="submit">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

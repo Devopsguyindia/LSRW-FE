@@ -1,0 +1,96 @@
+<section class="middle-inn-wrap">
+  <h3 class="wel-kids">Welcome to Lexicon</h3>
+  <div class="mid-section">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="course-box">
+          <h3 class="my-kids bor-bot-head">My Courses - {{mainservice.courseName}} - {{mainservice.topicName}}</h3>
+          <div class="my-quest-wrapp">
+            <div class="row">
+              <div class="col-md-3 lt-section-qu">
+                <div class="lt-quest-wrapp">
+                  <div class="view-image-wrapp">
+                    <span class="quest_img" [ngStyle]="{'background-image':'url('+image_url+''+topicImage+')'}"></span>
+                    <div class="view-btn-wrapp">
+                      <button class="view-btn" (click)="showDialog=!showDialog">View Image</button>
+                    </div>
+                  </div>
+                  <div class="quest-type-wrapp">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/mycourse', mainservice.courseId, mainservice.courseName]" data-toggle="tooltip" data-placement="top"
+                            title="Index">
+                            <img alt="" src="../../../assets/img/index_icon.png" title="Index">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/course/vocabulary', mainservice.urlId]" [class.disabled]="mainservice.vocabDisabled ? true : null"
+                            [ngClass]="{'active-quest': page == '/course/vocabulary'}" (click)="addActiveClass('/course/vocabulary');"
+                            data-toggle="tooltip" data-placement="top" title="Vocabulary">
+                            <img alt="" src="../../../assets/img/voca_icon.png" title="Vocabulary">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/course/pronunciation', mainservice.urlId]" [class.disabled]="mainservice.pronDisabled ? true : null"
+                            [ngClass]="{'active-quest': page == '/course/pronunciation'}" (click)="addActiveClass('/course/pronunciation');"
+                            data-toggle="tooltip" data-placement="top" title="Pronunciation">
+                            <img alt="" src="../../../assets/img/pronounce_icon.png" title="Pronunciation">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/course/unit', mainservice.urlId]" [class.disabled]="mainservice.grammDisabled ? true : null"
+                            [ngClass]="{'active-quest': page == '/course/grammer'}" (click)="addActiveClass('/course/grammer');"
+                            data-toggle="tooltip" data-placement="top" title="Grammar">
+                            <img alt="" src="../../../assets/img/grammar_icon.png" title="Grammar">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/course/conversation', mainservice.urlId]" [class.disabled]="mainservice.convDisabled ? true : null"
+                            [ngClass]="{'active-quest': page == '/course/conversation'}" (click)="addActiveClass('/course/conversation');"
+                            data-toggle="tooltip" data-placement="top" title="Conversation">
+                            <img alt="" src="../../../assets/img/convers_icon.png" title="Conversation">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="quest-inn">
+                          <a [routerLink]="['/course/practiceUnit', mainservice.urlId]" [class.disabled]="mainservice.pracDisabled ? true : null"
+                            [ngClass]="{'active-quest': page == '/course/practice'}" (click)="addActiveClass('/course/practice');"
+                            data-toggle="tooltip" data-placement="top" title="Practice">
+                            <img alt="" src="../../../assets/img/index_icon.png" title="Practice">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-dialog [(visible)]="showDialog">
+  <div class="ST-com-pop QR-Code">
+    <div class="modal-header">
+      <a (click)="showDialog = !showDialog" aria-label="Close" class="dialog__close-btn">X</a>
+    </div>
+    <div class="modal-body">
+      <div class="modal-inn">
+        <span class="quest_img" [ngStyle]="{'background-image':'url('+image_url+''+topicImage+')'}"></span>
+      </div>
+    </div>
+  </div>
+</app-dialog>

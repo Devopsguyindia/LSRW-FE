@@ -1,0 +1,132 @@
+<div class="main_wrapp_box">
+  <section class="content-header">
+    <div class="header-title">
+      <h1>
+        <img src="assets/img/user_ico_wht.png">Teacher</h1>
+    </div>
+  </section>
+  <section class="inner_wrapp_start" *ngIf="!endUser">
+    <form [formGroup]="userForm" #formDirective="ngForm" (ngSubmit)="onSubmit(user)">
+      <div class="inn_sec_dec">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>First name
+                <span>*</span>
+              </label>
+              <input type="text" placeholder="Enter First Name" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="user.first_name" />
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                <div *ngIf="f.firstName.errors.minlength">First Name must be at least 3 characters long</div>
+                <div *ngIf="f.firstName.errors.maxlength">First Name must be at less than 50 characters</div>
+                <div *ngIf="f.firstName.errors.pattern">First Name is not valid</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Last name
+                <span>*</span>
+              </label>
+              <input type="text" placeholder="Enter Last Name" formControlName="lastName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" [(ngModel)]="user.last_name" />
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 3 characters long</div>
+                <div *ngIf="f.lastName.errors.maxlength">Last Name must be at less than 50 characters</div>
+                <div *ngIf="f.lastName.errors.pattern">Last Name is not valid</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Gender
+                <span>*</span>
+              </label>
+              <div class="publsh_radio_wrapp">
+                <span class="comm_radio">
+                  <input type="radio" class="with-gap" formControlName="gender" id="yes1" [value]="'male'" [(ngModel)]="user.gender">
+                  <label for="yes1">Male</label>
+                </span>
+                <span class="comm_radio">
+                  <input type="radio" class="with-gap" formControlName="gender" id="no1" [value]="'female'" [(ngModel)]="user.gender">
+                  <label for="no1">Female</label>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 add_btn_box">
+            <button type="submit" class="com_btn">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>Submit</button>
+            <a class="com_btn can_btn" (click)="clear()">
+              <i class="fa fa-eraser" aria-hidden="true"></i>Cancel</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <section class="user_tbl_wrapp">
+    <div class="top_tab_sec">
+      <span class="user_tab active_user">
+        <a></a>Teacher</span>
+    </div>
+    <div class="table_wrapper">
+      <div class="serch_section">
+        <div class="row">
+          <div class="col-md-4 lt_sear">
+            <h4>Teacher List</h4>
+          </div>
+          <div class="col-md-8 rt_sear">
+            <div class="row">
+              <div class="pull_serch">
+                <div class="col-md-4 rt_here">
+                  <div class="sear_wrap">
+                    <input type="text" placeholder="Enter Search Here..." name="test" [(ngModel)]="searchuser1"
+                      (ngModelChange)="searchTeacher(searchuser1)" class="form-control" />
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comm_tble">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th width="40%">Name</th>
+                <th width="15%">Username</th>
+                <th width="15%">Password</th>
+                <th width="8%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of clientList | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>
+                  <span>{{item.first_name}} {{item.last_name}}</span>
+                </td>
+                <td>{{item.user_name}}</td>
+                <td>{{item.password}}</td>
+                <td>
+                  <button class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Edit" (click)="getTeacherById(item.id)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="left" title="Delete"
+                    (click)="deleteTeacher(item.id)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" maxSize="10"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,139 @@
+
+@media only screen and (max-width:1280px) {
+.wrapper{overflow: auto !important; }	
+.main-wrapp{background-repeat: repeat !important; height: 100% !important;}
+.main-inn-wrap{max-width: 100% !important; padding: 0 35px !important;}
+.lt-log-sec{display: inline-block !important; width: 100% !important; margin-bottom: 65px !important; position: relative !important; top: 30px !important; transform: none !important; -moz-transform: none !important; -webkit-transform: none !important;}
+.rt-log-sec{display: inline-block !important; position: relative !important; top: 0 !important; height: auto !important; width: 100% !important; margin-bottom: 25px !important;}
+.copy-right{display:none !important;}
+.login-wrapp{padding: 30px 80px !important;}
+.kid_one{left: 0 !important; width: 80px !important;}
+.kid_two{right: 0 !important; width: 80px !important;}
+.logo-login {text-align: center !important;}
+.st-abt-tit{text-align: center !important;}
+.st-abt-txt{text-align: center !important;}
+.home-redirect{text-align: center !important;}
+.main-wrapp-inner{max-width: 100% !important; padding: 0 35px !important;}
+}
+
+@media only screen and (max-width:1199px) {
+
+}
+
+
+@media only screen and (max-width:1024px) {
+
+}
+
+@media only screen and (max-width:991px) {
+.logo-sec { float: left !important; width: auto !important; }
+.rt-top-sec { width: auto !important; float: right !important; }
+.my-kids-box{min-height: auto !important; margin-bottom: 20px !important;}
+.lt-index { float: left !important; width: auto !important; }
+.rt-index { float: left !important; width: auto !important; }
+.lt-section-qu{width: 100% !important;}
+.rt-section-qu{margin-top: 15px !important; width: 100% !important;}
+.quest-type-wrapp{text-align: center !important;}
+.quest-type-wrapp .col-md-4 {width: auto !important; display: inline-block !important;}
+.padlt{padding-left: 15px !important;}
+.audio-btn{margin-top: 15px !important;}
+.nat-lang-wrapp{margin-top: 15px !important;}
+.conversation-wrapp{margin-bottom: 25px !important;}
+}
+
+
+@media only screen and (max-width:920px) {
+
+}
+
+@media only screen and (max-width:850px) {
+
+}
+
+@media only screen and (max-width:767px) {
+.logo-sec{float: left !important; width: 100% !important;text-align: center !important; margin-bottom: 15px !important;}
+.rt-top-sec{float: left !important;width: 100% !important;text-align: center !important;}
+.top-sec-wrapp{display: inline-block !important; text-align: center !important;}
+.main-wrapp-inner{padding: 0 15px !important;}
+.firstslider-wrapp .slick-slide {padding: 0px !important;}
+.listen-wrapp .list-answer-wrapp{margin-left: 0 !important; width: 100% !important;}
+.listen-wrapp .play-audio-sec { position: relative !important; right: 0 !important; top: 0 !important;}
+.listen-wrapp .answ_chk{width: 100% !important;}
+.answr-box-audio .quest-check-inner {width: 80% !important;}
+.middle-inn-wrap{padding: 20px 15px !important;}
+}
+
+@media only screen and (max-width:680px) {
+
+}
+
+@media only screen and (max-width:640px) {
+
+}
+
+@media only screen and (max-width:600px) {
+
+}
+
+@media only screen and (max-width:540px) {
+.frt-txt{width: 100% !important; text-align: left !important; line-height: normal !important; margin-top: 10px !important;}
+}
+
+
+@media only screen and (max-width:480px) {
+.main-logo img{width:100% !important;}
+.logo-login img{width:80% !important;}
+.main-inn-wrap {padding: 0 0 !important;}
+.login-wrapp {padding: 30px 30px !important;}
+.kid_one{display: none !important;}
+.kid_two{display: none !important;}
+.conver-lt-img{left: -17px !important;}
+.conver-rt-img{right: -16px !important;}
+}
+
+@media only screen and (max-width:414px) {
+.nat-btn{font-size: 12px !important;}
+}
+
+@media only screen and (max-width:400px) {
+.dashboard-sec{width: 100% !important;}
+.welcome-sec{width: 100% !important; margin:0px !important;}
+.logout-sec{width: 100% !important;}
+.conver-lt-img{left: -28px !important;}
+.conver-rt-img{right: -30px !important;}
+}
+
+
+@media only screen and (max-width:360px) {
+.three_wrapp_btn .chat_inner_all{margin-bottom: 5px !important;}
+}
+
+@media only screen and (max-width:320px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,81 @@
+<div class="main_wrapp_box">
+  <section class="content-header">
+    <div class="header-title">
+      <h1>
+        <img src="assets/img/user_ico_wht.png">BATCH ENROLLMENT</h1>
+    </div>
+  </section>
+  <section class="user_tbl_wrapp">
+    <!-- <div class="top_tab_sec">
+      <span class="user_tab active_user">
+        <a></a>Student</span>
+    </div> -->
+    <div class="table_wrapper">
+      <div class="serch_section">
+        <div class="row">
+          <div class="col-md-4 lt_sear">
+            <h4>Student List</h4>
+          </div>
+          <div class="col-md-12 rt_sear">
+            <div class="row">
+              <div class="pull_serch">
+                <div class="col-md-1 rt_here">
+                  <div class="sear_wrap">
+                    <!-- <input type="text" placeholder="Enter Search Here..." name="test" [(ngModel)]="searchuser1"
+                      (ngModelChange)="searchStudent(searchuser1)" class="form-control" />
+                    <i class="fa fa-search" aria-hidden="true"></i> -->
+                    <button class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Create Batch"
+                      (click)="addSelectedStudents()">
+                      Enroll Student
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-4 rt_here">
+                  <div class="sear_wrap">
+                    <select [(ngModel)]="batch_id" class="form-control">
+                      <option [ngValue]="undefined" disabled>select a Batch</option>
+                      <option *ngFor="let item1 of batchList" [value]="item1.id">{{item1.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comm_tble">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th width="15%">Select Students</th>
+                <th width="40%">Name</th>
+                <th width="15%">Standard</th>
+                <th width="15%">Roll number</th>
+                <th width="15%">Divison</th>
+                <th width="15%">Username</th>
+                <th width="15%">Password</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of studentList | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>
+                  <input type="checkbox" value="{{item}}" name="selectStudents" [checked]="item.checked" (change)="updateCheckedOptions(item, $event)">
+                </td>
+                <td>
+                  <span>{{item.first_name}} {{item.last_name}}</span>
+                </td>
+                <td>{{item.standard}}</td>
+                <td>{{item.roll_no}}</td>
+                <td>{{item.divison}}</td>
+                <td>{{item.user_name}}</td>
+                <td>{{item.password}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" maxSize="10"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

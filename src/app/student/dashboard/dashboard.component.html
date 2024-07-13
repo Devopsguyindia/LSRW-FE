@@ -1,0 +1,124 @@
+<section class="middle-inn-wrap">
+  <h3 class="wel-kids">Welcome to Lexicon</h3>
+  <div class="mid-section">
+    <div class="row">
+      <div class="col-md-4 cour-wrap">
+        <div class="course-box">
+          <h3 class="my-kids">My Courses</h3>
+          <div class="my-kids-box">
+            <div class="course-wrapp">
+              <div class="firstslider-wrapp">
+                <section class="center slider">
+                  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                    <div ngxSlickItem *ngFor="let item of courseData" class="flag-wrapp">
+                      <span class="flag-cir" [ngStyle]="{'background-image':'url(' + image_url + '' + item.image_file_path + ')'}"></span>
+                      <a [routerLink]="['/mycourse', item.id, item.name]">
+                        <!-- <h3>{{item.name}}</h3> -->
+                      </a>
+                      <div class="view-course"><a [routerLink]="['/mycourse', item.id, item.name]">{{item.name}}</a></div>
+                    </div>
+                  </ngx-slick-carousel>
+                  <!-- <div class="flag-wrapp" *ngFor="let item of courseData" >
+                    <span class="flag-cir" style="background-image: url(../../../assets/img/flag1.png);"></span>
+                    <a [routerLink]="['/mycourse', item.id]"><h3>{{item.name}}</h3></a>
+                  </div> -->      
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 lear-wrap">
+        <div class="course-box">
+          <h3 class="my-kids">Learning Meter</h3>
+          <div class="my-kids-box">
+            <div class="course-wrapp">
+              <div class="lear-dash">
+                <!-- <img alt="" src="../../../assets/img/larning-map.png" title=""> -->
+                <div style="display: block">
+                  <canvas baseChart
+                              [data]="doughnutChartData"
+                              [labels]="doughnutChartLabels"
+                              [chartType]="doughnutChartType"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 strenht-wrap">
+        <div class="course-box">
+          <h3 class="my-kids">Strength Index</h3>
+          <div class="stre-kids-box">
+            <div class="strength-wrapp">
+              <div class="stren-inn">
+                <div class="row">
+                  <div class="col-md-4 lt-index">
+                    <div class="lt-stren-index">
+                      <div class="cir-index-img" style="background-image: url(../../../assets/img/cir-index.png);">
+                        <span>{{progressData.listen_score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 rt-index">
+                    <div class="lt-stren-index">
+                      <div class="list-name">Listening</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stren-inn">
+                <div class="row">
+                  <div class="col-md-4 lt-index">
+                    <div class="lt-stren-index">
+                      <div class="cir-index-img" style="background-image: url(../../../assets/img/cir-index.png);">
+                        <span>{{progressData.speak_score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 rt-index">
+                    <div class="lt-stren-index">
+                      <div class="list-name">Speaking</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stren-inn">
+                <div class="row">
+                  <div class="col-md-4 lt-index">
+                    <div class="lt-stren-index">
+                      <div class="cir-index-img" style="background-image: url(../../../assets/img/cir-index.png);">
+                        <span>{{progressData.read_score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 rt-index">
+                    <div class="lt-stren-index">
+                      <div class="list-name">Reading</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stren-inn">
+                <div class="row">
+                  <div class="col-md-4 lt-index">
+                    <div class="lt-stren-index">
+                      <div class="cir-index-img" style="background-image: url(../../../assets/img/cir-index.png);">
+                        <span>{{progressData.write_score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 rt-index">
+                    <div class="lt-stren-index">
+                      <div class="list-name">Writing</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

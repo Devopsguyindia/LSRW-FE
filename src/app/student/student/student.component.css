@@ -1,0 +1,743 @@
+*{margin:0;padding:0;}
+::ng-deep html{float:left;width:100%;}
+::ng-deep body{float:left;width:100%; font-family: 'montserratregular'; color:#4a4a4a; font-size:12px; }
+::ng-deep a{text-decoration:none;outline:none;}
+::ng-deep select, button{outline:none!important;}
+::ng-deep select, button:focus{outline:none!important;}
+::ng-deep textarea,input{outline:none!important;}
+::ng-deep ul{margin:0px; padding:0px; list-style: none !important;}
+::ng-deep select option{background-color: transparent !important;}
+::ng-deep select::-ms-expand{display:none;}
+::ng-deep select {-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+
+::ng-deep .wrapper{float:left; width:100%; overflow:hidden;}
+::ng-deep .inner-wrapper{float:left; width:100%;}
+::ng-deep .login-wrapp-box{float:left; width:100%; position:relative;}
+::ng-deep .main-wrapp {
+    float: left;
+    width: 100%;
+    background: url('../../../assets/img/login_bg.png');	
+    background-repeat: no-repeat;
+    background-size: cover;
+	-webkit-background-size: cover;
+    height: 100vh;
+}
+::ng-deep .main-inn-wrap { width: 100%; position: relative; height: 100%; max-width: 1160px; margin: 0 auto; }
+::ng-deep .lt-log-sec { position: absolute; left: 0; width: 40%; transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); top: 50%; }
+::ng-deep .st-abt-wrap { float: left; width: 100%; }
+::ng-deep .st-abt-tit { float: left; width: 100%; font-size: 30px; font-family: 'montserratmedium'; margin-top: 48px; color: #fff; }
+::ng-deep .st-abt-txt { float: left; width: 100%; font-size: 14px; font-family: 'montserratlight'; margin-top: 15px; color: #fff; }
+::ng-deep .rt-log-sec { position: absolute; right: 0; width: 505px; top: 0; height:100vh; background-color: #fff; box-shadow: 0 1px 30px rgba(0,0,0,0.4); -webkit-box-shadow: 0 1px 30px rgba(0,0,0,0.4); }
+::ng-deep .main-logo { float: left; width: 100%; text-align: center; margin: 40px 0 50px; }
+::ng-deep .login-wrapp { float: left; width: 100%; padding: 30px 46px; background-color: #fff; border-radius: 0px; position: relative; }
+::ng-deep .sign-tit { float: left; width: 100%; color: #0d7ced; font-size: 22px; margin: 0 0 25px 0; font-family: 'montserratsemi_bold'; font-weight: normal; text-transform: uppercase; letter-spacing:0.5px; }
+::ng-deep .login-form-wrap { float: left; width: 100%; }
+::ng-deep .input-wrapp { float: left; width: 100%; margin-bottom: 30px; }
+::ng-deep .input-wrapp input::placeholder {color: #4a4a4a;}
+::ng-deep .input-wrapp input { border: none !important; box-shadow: none !important; border-radius: 0px !important; border-bottom: 2px solid #d4d4d4 !important; padding: 0 0 8px 0 !important; color: #4a4a4a !important; font-size: 14px; }
+::ng-deep .check_inner { float: left; width: 100%; position: relative; }
+::ng-deep .checkbox_sec { float: left; width: 100%; margin-bottom: 35px; }
+::ng-deep .frt-txt { float: right; text-align: right; width: auto; line-height: 23px; }
+::ng-deep .frt-txt a { color: #00a8e1; }
+::ng-deep .login-btn-wrap button { background-color: #0d7ced; color: #fff; text-transform: uppercase; padding: 8px 34px; border-radius: 50px; font-size: 16px; font-family: 'montserratlight'; border: 1px solid #0d7ced; margin-right: 18px; letter-spacing:0.5px; }
+::ng-deep .copy-right { position: absolute; left: 0; right: 0; text-align: left; color: #fff; top: auto; bottom: 15px; width: 100%; font-family: 'montserratlight'; font-size: 12px; margin: 0 auto; max-width: 1157px; float: none; }
+::ng-deep .home-redirect { float: left; width: 100%; margin-top: 15px; }
+::ng-deep .home-redirect a{color:#fff;}
+::ng-deep .kid_one { position: absolute; left:-120px; bottom: 0; width:120px; }
+::ng-deep .kid_two { position: absolute; right:-55px; bottom: 0; width:120px; }
+::ng-deep .main-wrapp-box { float: left; width: 100%; background: url('../../../assets/img/inn_pages_bg.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover; height: 100%; background-position: center; }
+::ng-deep .main-wrapp-inner { width: 100%; position: relative; height: 100%; max-width: 1230px; margin: 0 auto; }
+::ng-deep .header-section{float: left; width: 100%; padding:10px 0;}
+::ng-deep .head-logo{float: left; width: 100%;}
+::ng-deep .head-logo img{width:180px;}
+::ng-deep .top-sec-wrapp { float: right; width: 100%; text-align: right; line-height: 62px; }
+::ng-deep .logout-sec{display: inline-block; width: auto;}
+::ng-deep .logout-inn { display: inline-block;  width: auto;}
+::ng-deep .logout-inn  button {width: 42px; height: 42px; border-radius: 50%; background-color: #ed1f24; border: 4px solid #fff; text-align: center; line-height: 0px;}
+::ng-deep .welcome-sec{display: inline-block; width: auto; margin: 0 25px;}
+::ng-deep .navbar_set .second_navbar li a { color: #333; padding: 6px 0px; margin-right: 20px; font-size: 14px; }
+::ng-deep .navbar_pro_dropdown_set  .dropdown-menu{border: none; border-radius: 0;}
+::ng-deep .navbar_pro_dropdown_set  .dropdown-menu > li > a{font-size: 13px;}
+::ng-deep .header_profile_drop_down { display: inline-block; width: auto; position: relative; }
+::ng-deep .profil_header_img {
+    display: inline-block;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    border-radius: 50%;
+    width: 50px;
+    background-position: center;
+    background-color: #fff;
+	float: left;
+	border: 3px solid #fff;
+}
+::ng-deep .profil_details { display: inline-block; width: auto; margin-left: 10px; padding-top: 0; word-break: break-all; color:#fff; line-height: 23px; text-align: left; position: relative; top: -8px; }
+::ng-deep .profil_details small { float: none; width: auto; font-size: 12px; line-height: 12px; display: block; }
+::ng-deep .profil_details span { float: left; width: auto; font-size: 13px; }
+::ng-deep .header_profile_drop_down i { margin-left: 10px; color: #fff; position: absolute; bottom: 12px; }
+::ng-deep .navbar_pro_dropdown_set{ position: relative; display: inline-block; width: auto; line-height: 48px; }
+::ng-deep .dashboard-sec{display: inline-block; width: auto;}
+::ng-deep .dash-inn {display: inline-block;  width: auto;}
+::ng-deep .dash-inn a{ line-height: 35px; display: inline-block;width: 45px; height: 45px; border-radius: 50%; background-color: #22cf4b; border: 4px solid #fff; text-align: center; }
+::ng-deep .middle-inn-wrap{float: left; width: 100%; margin-bottom: 30px; background-color:#fff; border-radius:8px; padding:20px 28px; margin-top:15px; box-shadow: 0 1px 30px rgba(0,0,0,0.3); -webkit-box-shadow: 0 1px 30px rgba(0,0,0,0.3);}
+::ng-deep .wel-kids{float: left; width: 100%; margin-bottom: 30px; font-family: 'montserratmedium'; text-align:center; font-size:23px; color:#0d7ced; text-transform:uppercase;}
+::ng-deep .mid-section{float: left; width: 100%; position:relative; background-color:#efeeee; border:1px solid #dedede; padding:20px 15px; border-radius:5px;}
+::ng-deep .course-box{float: left; width: 100%;}
+::ng-deep .my-kids{float: left; width: 100%; margin-top: 6px; letter-spacing: 0.4px; font-family: 'montserratsemi_bold'; text-align:left; font-size:16px; color:#0d7ced; text-transform:uppercase; margin-bottom:20px;}
+::ng-deep .my-kids-box{float: left; width: 100%; min-height: 422px; padding:10px 20px; border-radius:5px; background-color:#fff; box-shadow:0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);}
+::ng-deep .course-wrapp{float: left; width: 100%; margin-top:25px;}
+::ng-deep .lear-dash{float: left; width: 100%;}
+::ng-deep .lear-dash img{width: 100%;}
+::ng-deep .strength-wrapp{float: left; width: 100%;}
+::ng-deep .stren-inn{float: left; width: 100%; margin-bottom:15px; background-color:#fff; border-radius:5px; padding:10px; box-shadow: 0 1px 20px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 20px rgba(0,0,0,0.2);}
+::ng-deep .lt-stren-index{float: left; width: 100%;}
+::ng-deep .cir-index-img { display: block; position: relative; height: 74px; width:74px; background-repeat: no-repeat; background-size: contain; -webkit-background-size: contain; background-position: center; }
+::ng-deep .cir-index-img span { position: absolute; right: 0; left: 0; text-align: center; top: 28px; width: auto; font-family: 'montserratbold'; font-size:14px;	 color:#1590e1; }
+::ng-deep .rt-index{padding-left:0px;}
+::ng-deep .list-name{float: left; width: 100%; line-height: 74px; font-family: 'montserratbold'; font-size:16px; color:#4a4a4a; letter-spacing:0.5px;}
+::ng-deep .footer-section { position: relative; float:left; left: 0; right: 0; text-align: center; color: #fff; top: auto; bottom: 10px; width: 100%; font-family: 'montserratlight'; font-size: 12px; margin-bottom: 10px; }
+::ng-deep .course-detail-wrapper { float: left; width: 100%; padding: 10px 15px; border-radius: 5px; background-color: #fff; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); }
+::ng-deep .course-table-wrapp{float: left; width: 100%;}
+::ng-deep .cours_table_set tbody tr td {font-family: 'montserratmedium'; vertical-align:middle;}
+::ng-deep .cours_table_set tbody tr td img{margin-right:12px;}
+::ng-deep .cours_table_set thead tr th{color:#0d7ced; font-family: 'montserratmedium'; font-weight: normal; text-transform:uppercase; letter-spacing: 0.6px; border-bottom: 1px solid #c2c2c2 !important;}
+::ng-deep .top_hover{border-radius: 17px; padding: 5px 10px; border: 1px solid #fff; cursor:pointer;}
+::ng-deep .top_hover:hover {border: 1px solid #0d7ced; color:#0d7ced;}
+::ng-deep .excellent{color:#0d7ced;}
+::ng-deep .good{color:#22cf4b;}
+::ng-deep .avg{color:#e7490b;}
+::ng-deep .weak{color:#8023c8;}
+::ng-deep .improve{color:#f12020;}
+::ng-deep .excell-bar{background-color:#0c71d8;}
+::ng-deep .good-bar{background-color:#22cf4b;}
+::ng-deep .avg-bar{background-color:#e7490b;}
+::ng-deep .weak-bar{background-color:#7620b9;}
+::ng-deep .improve-bar{background-color:#f12020;}
+::ng-deep .flag-wrapp{text-align:center;}
+::ng-deep .flag-wrapp h3{font-family: 'montserratmedium'; font-size:16px;}
+::ng-deep .flag-cir { width: 150px; height: 150px; border-radius: 50%; background-size: contain; -webkit-background-size: contain; background-position:center; display: inline-block; }
+::ng-deep .firstslider-wrapp .slick-slide{padding: 0 8px;}
+::ng-deep .firstslider-wrapp { float: left; width: 100%; border: 1px solid #ececec; padding: 15px 0; }
+::ng-deep .view-course { float: left; width: 100%; text-align: center; margin-top: 5px; }
+::ng-deep .view-course a { background-color: #0d7ced; color: #fff; font-family: 'montserratmedium'; border-radius: 20px; padding: 8px 20px; font-size: 14px; display: inline-block; }
+
+/*my question pages css*/
+::ng-deep .my-kids.bor-bot-head { border-bottom: 1px solid #cdcdcd; padding-bottom: 10px; }
+::ng-deep .my-quest-wrapp{float: left; width: 100%;}
+::ng-deep .lt-quest-wrapp{float: left; width: 100%;}
+::ng-deep .rt-quest-wrapp{float: left; width: 100%; background-color:#fff;  box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);}
+::ng-deep .view-image-wrapp{float: left; width: 100%;}
+::ng-deep .quest_img {
+    height: 116px;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: block;
+	box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .view-btn-wrapp{float: left; width: 100%; margin-top:10px;}
+::ng-deep .view-btn { width: 100%; background-color: #0d7ced; color: #fff; padding: 4px 16px; border-radius: 50px; font-size: 14px; font-family: 'montserratmedium'; border: 1px solid #0d7ced; letter-spacing: 0.5px; }
+::ng-deep .lt-section-qu { float: left; width: 21%; }
+::ng-deep .rt-section-qu { float: right; width: 78%; }
+::ng-deep .quest-type-wrapp{float: left; width: 100%; padding:20px 20px 15px; margin-top:25px; background-color: #fff; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); }
+::ng-deep .quest-inn { display: inline-block; width: 100%; text-align: center; margin-bottom:10px; }
+::ng-deep .quest-inn a { line-height: 41px; display: inline-block; width: 48px; height: 48px; border-radius: 50%; background-color: #0d7ced; border: 4px solid #fff; text-align: center; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); } 
+::ng-deep .quest-inn a:hover{background-color:#22cf4b;}
+::ng-deep .quest-inn .active-quest{background-color:#22cf4b;}
+::ng-deep .match_name_wrapp{float: left; width: 100%; padding: 8px 15px; border-bottom: 1px solid #c2c2c2; margin-bottom:10px; }
+::ng-deep .mat-name{float: left; width: 100%; line-height: 55px; letter-spacing: 0.5px; font-family: 'montserratsemi_bold'; font-size:14px; text-transform:uppercase; color:#0d7ced;}
+::ng-deep .match-cir {
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    margin-bottom: 0;
+	margin-left:10px;
+}
+::ng-deep .match-cir a {
+    line-height: 37px;
+    overflow: hidden;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+	overflow: hidden;
+    border-radius: 50%;
+    background-color: #0d7ced;
+    border: 4px solid #fff;
+    text-align: center;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .match-wrapp{float:right; width:auto;}
+::ng-deep .last-two a:hover{background-color:#22cf4b;}
+::ng-deep .last-two a.active-match{background-color:#22cf4b;}
+::ng-deep .quest-inner{float: left; width: 100%; padding:15px 20px;}
+::ng-deep .quest-head{float: left; width: 100%; font-family: 'montserratmedium'; font-size:14px; margin-top: 0;margin-bottom: 18px;}
+::ng-deep .ques-plus-inner{float: left; width: 100%; }
+::ng-deep .lt-quest{ float: left; width: 100%; font-size:14px; color:#0d7ced; font-family: 'montserratsemi_bold'; text-transform:uppercase;}
+::ng-deep .mid-quest input{width: 100%;  font-family: 'montserratlight'; font-size:14px; font-size: 13px; text-align: center; box-shadow: none;}
+::ng-deep .rt-quest{ float: left; width: 100%;  font-size:14px; color:#4a4a4a; font-family: 'montserratsemi_bold'; text-transform:uppercase;}
+::ng-deep .quest-box{float: left; width: 100%; margin-bottom:8px;}
+::ng-deep .pagin_wrapper{float: left; width: 100%; margin-top:10px; background-color:#fff; padding: 10px; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); }
+::ng-deep .page-btn { background-color: #0d7ced; color: #fff; width:100%; padding: 6px 22px; border-radius: 50px; font-size: 14px; font-family: 'montserratmedium'; border: 1px solid #0d7ced; letter-spacing: 0.5px; }
+::ng-deep .disable-btn{ background-color:#bebebe; border: 1px solid #bebebe;}
+::ng-deep .slide-sec{float: left; width: 100%; margin-top: 5px;}
+::ng-deep .slide-sec img{width: 100%;}
+::ng-deep .ques_two-inner{float: left; width: 100%;}
+::ng-deep .quest-box-check{float: left; width: 100%;}
+::ng-deep .quest-check-inner { float: left; width: 100%; border: 1px solid #ccc; border-radius: 3px; padding: 10px 8px; }
+::ng-deep .lt_chk { float: left; width: 18%; text-align: center; }
+::ng-deep .lt_chk i { color: #3cb878; font-size: 26px; font-weight: normal; }
+::ng-deep .lt_chk_wrong { float: left; width: 18%; text-align: center; }
+::ng-deep .lt_chk_wrong i { color: #ff0000; font-size: 26px; font-weight: normal; }
+::ng-deep .rt_chk{float: right; width: 80%; line-height: 28px; font-family: 'montserratmedium'; text-align:left; font-size:13px; color:#4a4a4a; text-transform:uppercase;}
+::ng-deep .quest-box-check-img{float: left; width: 100%; margin-top:10px;}
+::ng-deep .thumb-box{float: left; width: 33%;}
+::ng-deep .thumb_img {
+    height: 40px;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: block;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .thumb_img_new {
+    height: 128px;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: block;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .thumb-quest { float: left; width: auto; margin-right: 5px; }
+::ng-deep .listen-wrapp{float: left; width: 100%;}
+::ng-deep .list-audio-wrapp{float: left; width: 100%;}
+::ng-deep .list-answer-wrapp { float: left; width: 70%; margin-left: 15%; }
+::ng-deep .list-answer-wrapp h3{float: left; width: 100%; font-size:14px; color:#4a4a4a; font-family: 'montserratsemi_bold'; text-transform:uppercase;}
+::ng-deep .answr-box-audio{float: left; width: 100%; position:relative;}
+::ng-deep .answ_chk{ float: left; width: 93%; font-size:12px;}
+::ng-deep .answ_chk_rt i { color: #3cb878; font-size: 28px; font-weight: normal; }
+::ng-deep .answ_chk_rt_wrong i { color: #ff0000; font-size: 28px; font-weight: normal; }
+::ng-deep .answr-box-audio .quest-check-inner { width: 80%; } 
+::ng-deep .play-audio-sec { position: absolute; right: 45px; top: 3px; }
+::ng-deep .play-audio-sec a {
+    line-height: 41px;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #0d7ced;
+    border: 4px solid #fff;
+    text-align: center;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .conversation-wrapp{float: left; width: 100%;}
+::ng-deep .conser-inner{float: left; width: 100%;}
+::ng-deep .conser-lt-chat-box{float: right; width: 100%; position:relative; margin-bottom:15px;}
+::ng-deep .conser-lt-chat-txt { float: right; width: 94%; position:relative; background-color: #d2f3da;  padding: 9px 10px; border-radius: 3px; }
+::ng-deep .conser-lt-chat-txt span { position: absolute; top: -7px; left: -7px; }
+::ng-deep .conver-lt-img{position: absolute; top:-4px; left:0px;}
+::ng-deep .chat_img {
+    height: 38px;
+	width: 38px;
+	border-radius:50%;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: block;   
+}
+::ng-deep .conser-rt-chat-box{float: right; width: 100%; position:relative; margin-bottom:15px;}
+::ng-deep .conser-rt-chat-txt { float: left; width: 94%; position:relative; text-align: right; background-color: #d2e4f5;  padding: 9px 10px; border-radius: 3px; }
+::ng-deep .conser-rt-chat-txt span { position: absolute; top: -7px; right: -7px; }
+::ng-deep .conver-rt-img{position: absolute; top:-4px; right:0px;}
+::ng-deep .chat_img {
+    height: 38px;
+	width: 38px;
+	border-radius:50%;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: block;   
+}
+::ng-deep .chat_inner_all { float: left; width: 100%; position: relative; }
+::ng-deep .chat_inner_all input { border: 1px solid #ccc !important; border-radius:20px; height: 35px; width: 90%; background-color:#fff; padding: 10px 15px; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); }
+::ng-deep .send-btn { background-color: #0d7ced; color: #fff; padding: 4px 22px; border-radius: 50px; font-size: 16px; border: 1px solid #0d7ced; width: auto; }
+::ng-deep .chat_inner_all span { position: absolute; top: 1px; right: 0; }
+::ng-deep .blank-left-sec{float: left; width: 100%;}
+::ng-deep .blank-image-wrapp { float: left; width: 100%; }
+::ng-deep .blank_img {
+    height: 210px;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #ebebeb;
+    display: block;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.1);
+}
+::ng-deep .ques-head {float: left; width: 100%; margin-bottom: 10px; font-family: 'montserratmedium'; }
+::ng-deep .blank-answe-box{float: left; width: 100%; margin-bottom: 15px; font-family: 'montserratmedium';}
+::ng-deep .vocabul-img-wrapp{ min-height: 240px; background-color: #ebebeb; padding:10px;}
+::ng-deep .voca_img {
+    height: 210px;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-repeat: no-repeat;    
+    display: block;   
+}
+::ng-deep .nat-lang-wrapp{float: left; width: 100%;}
+::ng-deep .nat-head { float: left; width: 100%; letter-spacing: 0.3px; font-family: 'montserratsemi_bold'; text-transform: uppercase; color: #0d7ced; margin-top: 0; font-size: 14px; }
+::ng-deep .nat-audio-wrapp{float: left; width: 100%; margin-bottom: 15px; background-color:#ebebeb; padding:22px 25px;}
+::ng-deep .nat-btn {
+    background-color: #0d7ced;
+    color: #fff;
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'montserratmedium';
+    border: 1px solid #0d7ced;
+    letter-spacing: 0.5px;
+	text-transform:uppercase;
+}
+::ng-deep .audio-btn {float: left; width: auto; }
+::ng-deep .padlt{padding-left:0px;}
+::ng-deep .audio-btn button {
+    line-height: normal;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #22cf4b;
+    border: 4px solid #fff;
+    text-align: center;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+}
+::ng-deep .exp-audio-wrapp .audio-btn button{ width: 36px; height: 36px;}
+::ng-deep .exp-head{float: left; width: 100%; margin: 9px 0 0; font-family: 'montserratsemi_bold';  font-size:16px; color: #4a4a4a;}
+::ng-deep .exp-audio-wrapp{float: left; width: 100%;}
+::ng-deep .exp-txt-wrapp{float: left; width: 100%; font-family: 'montserratlight'; font-size:11px;  margin-top:8px; background-color:#ebebeb; padding:8px 8px;}
+::ng-deep .pron-wrapp{float: left; width: 100%;}
+::ng-deep .happ-wrapp { float: left; width: 60%; border-radius: 3px; margin-left: 20%; letter-spacing: 0.5px; background-color: #b8dbfe; padding: 10px; font-family: 'montserratsemi_bold'; font-size: 20px; text-transform: uppercase; text-align: center;  }
+::ng-deep .happ-txt{float: left; width: 70%; margin-bottom: 9px; margin-left: 15%; text-align:center; font-family: 'montserratlight'; font-size:11px; margin-top:15px;}
+::ng-deep .pronun-audio-wrapp{float: left; width: 100%;}
+::ng-deep .pronu-inner{float: left; width: 100%; position:relative; background-color: #ebebeb; padding: 15px 16px;}
+::ng-deep .pron-aud-box{float: right; width: 90%; border-radius: 3px; background-color:#fff; padding:10px 6px;}
+::ng-deep .pron-aud-box img{width: 100%;}
+::ng-deep .pron-btn { position: absolute; left: 11px; top: 10px; }
+::ng-deep .pron-btn button { line-height: normal; display: inline-block; width: 36px; height: 36px; overflow: hidden; border-radius: 50%; background-color: #22cf4b; border: 4px solid #fff; text-align: center; box-shadow: 0 1px 15px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2); }
+::ng-deep .pron-play-btn button{ background-color: #bebebe;}
+
+
+/*checkbox css*/
+::ng-deep .check_inner [type="checkbox"]:not(:checked),
+::ng-deep .check_inner [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+    opacity: 0
+}
+::ng-deep .check_inner [type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 20px;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none
+}
+::ng-deep .check_inner [type="checkbox"]+label:before,
+::ng-deep .check_inner [type="checkbox"]:not(.filled-in)+label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #4a4a4a;
+    border-radius: 1px;
+    margin-top: 2px;
+    transition: .2s
+}
+::ng-deep .check_inner [type="checkbox"]:not(.filled-in)+label:after {
+    border: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0)
+}
+::ng-deep .check_inner [type="checkbox"]:not(:checked):disabled+label:before {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.26)
+}
+::ng-deep .check_inner [type="checkbox"].tabbed:focus+label:after {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1)
+}
+::ng-deep .check_inner [type="checkbox"]:checked+label:before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%
+}
+::ng-deep .check_inner [type="checkbox"]:checked:disabled+label:before {
+    border-right: 2px solid rgba(0, 0, 0, 0.26);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.26)
+}
+
+::ng-deep .check_inner [type="checkbox"].filled-in+label:after {
+    border-radius: 2px
+}
+::ng-deep .check_inner [type="checkbox"].filled-in+label:before,
+::ng-deep .check_inner [type="checkbox"].filled-in+label:after {
+    content: '';
+    left: 0;
+    position: absolute;
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    z-index: 1
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:not(:checked)+label:before {
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    left: 6px;
+    top: 10px;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 20% 40%;
+    transform-origin: 100% 100%
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:not(:checked)+label:after {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #5a5a5a;
+    top: 0px;
+    z-index: 0
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:checked+label:before {
+	top: 1px;
+	left: 2px;
+	width: 8px;
+	height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:checked+label:after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 0
+}
+::ng-deep .check_inner [type="checkbox"].filled-in.tabbed:focus+label:after {
+    border-radius: 2px;
+    border-color: #4a4a4a;
+    background-color: rgba(0, 0, 0, 0.1)
+}
+::ng-deep .check_inner [type="checkbox"].filled-in.tabbed:checked:focus+label:after {
+    border-radius: 2px;
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:disabled:not(:checked)+label:before {
+    background-color: transparent;
+    border: 2px solid transparent
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:disabled:not(:checked)+label:after {
+    border-color: transparent;
+    background-color: #BDBDBD
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:disabled:checked+label:before {
+    background-color: transparent
+}
+::ng-deep .check_inner [type="checkbox"].filled-in:disabled:checked+label:after {
+    background-color: #BDBDBD;
+    border-color: #BDBDBD
+}
+::ng-deep .check_inner { display: inline-block; width: auto; }
+::ng-deep .check_inner label { color: #4a4a4a  !important; font-weight: normal; font-size: 14px !important; display: inline-block; line-height: 19px; margin-bottom: 0; } 
+::ng-deep .check_inner .filled-in[type="checkbox"]:not(:checked) + label::after {   
+    background-color: #fff !important;
+    border: 1px solid #4a4a4a !important;
+    top: 0px;
+    z-index: 0;
+}
+::ng-deep .check_inner .filled-in[type="checkbox"]:checked + label::after {
+    top: 0;   
+    border: 1px solid #4a4a4a !important;
+    background-color: #4a4a4a !important;
+    z-index: 0;   
+}
+::ng-deep .checkbox_sec .check_inner [type="checkbox"] + label {
+    font-size: 13px !important;
+    font-weight: normal !important;
+    line-height: 20px !important;
+}
+
+
+/*new css add*/
+
+::ng-deep .welcome-sec .dropdown-toggle::after{display: none !important;}
+::ng-deep .welcome-sec .dropdown-menu.show{top: 15px !important;}
+
+
+::ng-deep .lt_cht_name {
+    position: relative;    
+    padding: 5px 0px;
+    float: left;
+    width: auto;
+    margin-top: -8px;
+    margin-left: 43px;
+    font-family: 'montserratmedium';
+}
+::ng-deep .rt_cht_name {
+    position: relative;      
+    padding: 5px 0px;
+    float: right;
+    width: auto;
+    margin-top: -8px;
+    margin-right: 43px;
+    font-family: 'montserratmedium';
+}
+::ng-deep .quest-check-inner{min-height: 54px; margin-bottom: 10px; cursor:pointer; position: relative;}
+::ng-deep .two_chat_wrapper .conser-lt-chat-txt{width: 88%;}
+::ng-deep .two_chat_wrapper .conser-rt-chat-txt{width: 88%;}
+::ng-deep .three_wrapp_btn .chat_inner_all {
+display: inline-block;
+width: auto;
+margin-right: 10px;
+}
+::ng-deep .three_wrapp_btn {
+    display: inline-block;
+    width: 100%;
+}
+::ng-deep .am_wrapp {
+    display: inline-block;
+    width: 100%;
+    margin-top: 15px;
+}
+::ng-deep .am_wrapp .blank-answe-box {
+    width: auto;
+    display: inline-block;
+    margin-right: 8px;
+}
+::ng-deep .new_box {
+    float: left;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+::ng-deep .matc_box_sec{float: none; width:100%; margin: 0 auto; max-width: 600px;}
+::ng-deep .wel_section{min-height: 500px;}
+::ng-deep .match-cir a.active_flag{border: 4px solid #22cf4b !important; box-shadow: none !important;}
+::ng-deep .match-cir a:hover {
+    border: 4px solid #22cf4b !important;
+    box-shadow: none !important;
+}
+::ng-deep .match-cir.last-two a:hover {
+    border: 4px solid #fff !important;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2) !important;
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,0.2) !important;
+}
+::ng-deep .invalid-feedback {
+    color: red;
+    margin-top: 5px;
+}
+
+::ng-deep .act_green{border: 1px solid #22cf4b !important;}
+::ng-deep .act_red{border: 1px solid #ff0000 !important;}
+
+::ng-deep a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
+
+
+
+::ng-deep .logo-login img {width: 100%;}
+
+::ng-deep .audio-btn .sound_img{width: 100%;}
+
+::ng-deep .box_display .quest-check-inner {
+    background-color: #fff;
+}
+
+/* ::ng-deep .quest-check-inner{background-color: #ccc;} */
+
+::ng-deep .act_red {
+    border: 1px solid #ff0000 !important;
+    background-color: #ff0000;
+}
+
+::ng-deep .act_red .lt_chk_wrong i{color: #fff;}
+
+::ng-deep .act_green {
+    border: 1px solid #22cf4b !important;
+    background-color: #22cf4b;
+}
+
+::ng-deep .act_green .lt_chk  i{color: #fff;}
+
+::ng-deep .list-audio-wrapp .send-btn{margin-right: 5px;}
+
+::ng-deep .answ_chk_rt_wrong.new_test {
+    position: relative;
+    top: 5px;
+    left: 9px;
+}
+::ng-deep .pagin_wrapper .page-btn {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+::ng-deep .list-audio-wrapp .quest-head{margin-top: 10px; margin-bottom: 2px;}
+::ng-deep .list-audio-wrapp progress-bar {
+    display: inline-block;
+    width: 100%;
+}
+::ng-deep .chat_inner_all.conver_chat {
+    width: auto;
+    margin-right: 5px;
+}
+::ng-deep .pagin_wrapper .progress-outer{margin: 6px 2% !important;}
+::ng-deep .answr-box-audio .quest-check-inner { background-color: #fff; }
+
+::ng-deep .rt_chk.thum-box.large_img{float: left; width: 100%;}
+::ng-deep .rt_chk.thum-box.large_img .thumb-box{width: 100%;}
+::ng-deep .rt_chk.thum-box.large_img .thumb_img{height: 90px;}
+::ng-deep .lt_chk_wrong.large_icon {
+    position: absolute;
+    right: -7px;
+    top: -19px;
+}
+::ng-deep .lt_chk_wrong.large_icon i {
+    color: #0d7ced !important;
+}
+
+::ng-deep .lt_chk.large_icon {
+    position: absolute;
+    right: -7px;
+    top: -19px;
+}
+::ng-deep .lt_chk.large_icon i {
+    color: #0d7ced !important;
+}
+::ng-deep .new_box.act_gray {
+    background-color: #ccc;
+}
+::ng-deep .you_spoke {
+    float: left;
+    width: 100%;
+    background-color: #ccc;
+    padding: 13px 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+::ng-deep .pron-play-btn button.active_blue {
+    background-color: #0d7ced !important;
+}
+::ng-deep .box_display .rt_chk{float: left; width: 100%; text-align: center;}
+::ng-deep .blank-answe-box .new_box{background-color: #0d7ced; color: #fff;  border: none;}
+::ng-deep .blank-answe-box .new_box.disable_gray{background-color: #bebebe !important;}
+::ng-deep .box_display .quest-check-inner .rt_chk a {
+    color: #fff;
+    text-decoration: none; 
+}
+::ng-deep .box_display .quest-check-inner {
+    background-color: #0d7ced;
+    border: none;
+}
+::ng-deep .quest-box-check .quest-check-inner .rt_chk{float:left; width:100%; text-align: center;}
+::ng-deep .act_red .lt_chk_wrong {
+    position: absolute;
+	right: 4px;
+    top: 2px;
+    z-index: 9;
+}
+::ng-deep .act_green .lt_chk {
+    position: absolute;
+	right: 4px;
+    top: 2px;
+    z-index: 9;
+}
+::ng-deep .act_green .rt_chk {
+    color: #fff;
+}
+::ng-deep .act_red .rt_chk {
+    color: #fff;
+}
+::ng-deep .matc_box_sec .quest-check-inner h5{text-align:center;}
+::ng-deep .matc_box_sec .quest-check-inner.act_green h5{color:#fff;}
+::ng-deep .matc_box_sec .quest-check-inner.act_red h5{color:#fff;}
+::ng-deep .matc_box_sec .quest-check-inner h5.blue_txt_pair{color:#0d7ced;}
+::ng-deep .conser-lt-chat-txt.act_chat_green{background-color: #22cf4b !important; font-family: 'montserratsemi_bold'; color:#fff;}
+::ng-deep .conser-rt-chat-txt.act_chat_blue{background-color: #0d7ced !important; font-family: 'montserratsemi_bold'; color:#fff;}
+::ng-deep .ST-com-pop .quest_img{height: 350px;}
+
+::ng-deep .two_chat_wrapper .act_red .lt_chk_wrong{position: relative;}
+
+
+
+
+
+
+
+
+

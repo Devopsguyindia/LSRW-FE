@@ -1,0 +1,151 @@
+<div class="main_wrapp_box">
+  <section class="content-header">
+    <div class="header-title">
+      <h1>
+        <img src="assets/img/user_ico_wht.png">PROGRESS</h1>
+    </div>
+  </section>
+  <section class="user_tbl_wrapp">
+    <div class="mid-section wel_section">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="course-box">
+            <div class="course-detail-wrapper">
+              <div class="course-table-wrapp">
+                <div class="table-responsive">
+                  <table class="table cours_table_set">
+                    <thead>
+                      <tr>
+                      <th width="20%">Topics</th>
+                      <th width="50%">Completed</th>
+                      <th width="30%">Listen</th>
+                      <th width="40%">Speak</th>
+                      <th width="40%">Read</th>
+                      <th width="40%">Write</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of progressList" >
+                      <td><span class="top_hover"><a [routerLink]="['/school/progress-topic', userId, item.topic_id]">{{item.name}}</a></span></td>
+                      <td>
+                        <!-- <div class="progress"> -->
+                          <progress-bar [progress]="item.progress" [color-degraded]="{'0': '#dedede', '1': '#f12020', '19': '#f12020', '39': '#e7490b', '59': '#22cf4b', '79': '#0d7ced', '100': '#0d7ced'}">
+                          </progress-bar>
+                        <!-- </div> -->
+                      </td>
+                      <td>
+                        <span class="excellent" *ngIf="item.score.listen_score >= 0.80" >
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Excellent
+                        </span>
+                        <span class="good" *ngIf="item.score.listen_score >= 0.60 && item.score.listen_score <= 0.79">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Good
+                        </span>
+                        <span class="avg" *ngIf="item.score.listen_score >= 0.40 && item.score.listen_score <= 0.59">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Average
+                        </span>
+                        <span class="weak" *ngIf="item.score.listen_score > 0.20 && item.score.listen_score <= 0.39">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Weak
+                        </span>
+                        <span class="improve" *ngIf="item.score.listen_score <= 0.20 && item.progress > 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to Improve
+                        </span>
+                        <span class="improve" *ngIf="item.progress < 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to start
+                        </span>
+                      </td>
+                      <td>
+                        <span class="excellent" *ngIf="item.score.speak_score >= 0.80" >
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Excellent
+                        </span>
+                        <span class="good" *ngIf="item.score.speak_score >= 0.60 && item.score.speak_score <= 0.79">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Good
+                        </span>
+                        <span class="avg" *ngIf="item.score.speak_score >= 0.40 && item.score.speak_score <= 0.59">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Average
+                        </span>
+                        <span class="weak" *ngIf="item.score.speak_score > 0.20 && item.score.speak_score <= 0.39">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Weak
+                        </span>
+                        <span class="improve" *ngIf="item.score.speak_score <= 0.20 && item.progress > 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to Improve
+                        </span>
+                        <span class="improve" *ngIf="item.progress < 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to start
+                        </span>
+                      </td>
+                      <td>
+                        <span class="excellent" *ngIf="item.score.read_score >= 0.80" >
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Excellent
+                        </span>
+                        <span class="good" *ngIf="item.score.read_score >= 0.60 && item.score.read_score <= 0.79">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Good
+                        </span>
+                        <span class="avg" *ngIf="item.score.read_score >= 0.40 && item.score.read_score <= 0.59">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Average
+                        </span>
+                        <span class="weak" *ngIf="item.score.read_score > 0.20 && item.score.read_score <= 0.39">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Weak
+                        </span>
+                        <span class="improve" *ngIf="item.score.read_score <= 0.20 && item.progress > 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to Improve
+                        </span>
+                        <span class="improve" *ngIf="item.progress < 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to start
+                        </span>
+                      </td>
+                      <td>
+                        <span class="excellent" *ngIf="item.score.write_score >= 0.80" >
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Excellent
+                        </span>
+                        <span class="good" *ngIf="item.score.write_score >= 0.60 && item.score.write_score <= 0.79">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Good
+                        </span>
+                        <span class="avg" *ngIf="item.score.write_score >= 0.40 && item.score.write_score <= 0.59">
+                          <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                          Average
+                        </span>
+                        <span class="weak" *ngIf="item.score.write_score > 0.20 && item.score.write_score <= 0.39">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Weak
+                        </span>
+                        <span class="improve" *ngIf="item.score.write_score <= 0.20 && item.progress > 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to Improve
+                        </span>
+                        <span class="improve" *ngIf="item.progress < 80">
+                          <img src="../../../assets/img/weak.png" title="Excellent"/>
+                          Need to start
+                        </span>
+                      </td>
+                      </tr>
+                      </tbody>
+                   </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

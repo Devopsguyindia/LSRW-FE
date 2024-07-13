@@ -1,0 +1,109 @@
+<div class="col-md-9 rt-section-qu">
+  <div class="rt-quest-wrapp">
+    <div class="match_name_wrapp">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="mat-name">Pronunciation</div>
+        </div>
+        <div class="col-md-7">
+          <div class="match-wrapp">
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'hi-IN'}" data-toggle="tooltip" (click)="mainservice.language_code = 'hi-IN';changeFolder('hi-IN');mainservice.voice_code='Google हिन्दी'"  data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/india-flag-round-icon-64.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-GB'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-GB';changeFolder('en-GB');mainservice.voice_code='Google UK English Female'"  data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/match-flag1.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-US'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-US';changeFolder('en-US');mainservice.voice_code='Google US English'" data-placement="top" title="" data-original-title="USA">
+                <img alt="" src="../../../assets/img/match-flag2.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir last-two">
+              <a class="active-match" data-toggle="tooltip" data-placement="top" title="" data-original-title="Audio">
+                <img alt="" src="../../../assets/img/audio-match.png" title="Index">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 0.7" >
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.7}"  data-placement="top" title="" (click) = "snell = 1" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 1" >
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.3}"  data-placement="top" title="" (click) = "snell = 1 - 0.3" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item of cardData; index as i;">
+    <div class="quest-inner" *ngIf="i == count">
+      <div class="ques_two-inner">
+        <div class="pron-wrapp">
+          <div class="happ-wrapp">{{item.content.word}}</div>
+          <div class="happ-txt">
+            <!-- {{item.wordData.cmu}}<br>
+            {{item.wordData.pos}}<br>
+            {{item.wordData.rhyme}}<br>
+            {{item.wordData.stress}}<br>
+            {{item.wordData.syllables}} -->
+          </div>
+          <div class="pronun-audio-wrapp">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="pronu-inner">
+                  <div class="pron-aud-box" *ngIf="waveFlag" ><div id="waveform1">
+                    <!-- <span class="thumb_img_new"
+                    [ngStyle]="{'background-image':'url(' + image_url + '' + i+1 + '.png)'}"></span> -->
+                    <img src="{{image_url}}{{i+1}}.png">
+                  </div></div>
+                  <span class="pron-btn">
+                    <button class="" (click)="textToSpeech(item.content.word, 'waveform1');item.dis1=false;">
+                      <img alt="" src="../../../assets/img/audio_nat.png" title="">
+                    </button>
+                  </span>
+                  <!-- <a (click)="screenshot()" >Download image</a>
+                  <div id="foo"></div> -->
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="pronu-inner">
+                  <div class="pron-aud-box"><div id="waveform2"></div></div>
+                  <span class="pron-btn pron-play-btn">
+                    <button [ngClass]="{'active_blue': !item.dis1}" [disabled]="item.dis1" (click)="speak();customId='waveform2'">
+                      <img alt="" src="../../../assets/img/pron_play_audio.png" title="">
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="you_spoke" *ngIf="item.ans">You spoke: <span [ngStyle]="{'color': item.color}">{{item.ans}}</span></div>
+    </div>
+    </div>
+  </div>
+  <div class="pagin_wrapper">
+    <div class="row">
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == 0}" [disabled]="count == 0" (click)="count=count-1;subProgress()"
+          type="submit">Previous</button>
+      </div>
+      <div class="col-md-8">
+        <!-- <div class="slide-sec"><img src="../../../assets/img/next-slide1.png" /></div> -->
+        <progress-bar [progress]="progress" [color]="'#22cf4b'">
+        </progress-bar>
+      </div>
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == cardData.length-1}" (click)="addProgress();count=count+1"
+          [disabled]="count == cardData.length-1" type="submit">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

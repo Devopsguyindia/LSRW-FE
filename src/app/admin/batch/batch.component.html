@@ -1,0 +1,153 @@
+<div class="main_wrapp_box">
+  <section class="content-header">
+    <div class="header-title">
+      <h1>
+        <img src="assets/img/user_ico_wht.png">Batch</h1>
+    </div>
+  </section>
+  <section class="inner_wrapp_start" *ngIf="!endUser">
+    <form [formGroup]="userForm" #formDirective="ngForm" (ngSubmit)="onSubmit(user)">
+      <div class="inn_sec_dec">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Batch name
+                <span>*</span>
+              </label>
+              <input type="text" placeholder="Enter Batch Name" formControlName="batchName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.batchName.errors }" [(ngModel)]="user.name" />
+              <div *ngIf="submitted && f.batchName.errors" class="invalid-feedback">
+                <div *ngIf="f.batchName.errors.required">Batch Name is required</div>
+                <div *ngIf="f.batchName.errors.minlength">Batch Name must be at least 3 characters long</div>
+                <div *ngIf="f.batchName.errors.maxlength">Batch Name must be at less than 50 characters</div>
+                <div *ngIf="f.batchName.errors.pattern">Batch Name is not valid</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Course
+                <span>*</span>
+              </label>
+              <select [(ngModel)]="user.course_id" formControlName="course" id="course_id" class="form-control">
+                <option [ngValue]="undefined" disabled>select a Course</option>
+                <option *ngFor="let item of courses" [value]="item.id">{{item.name}}</option>
+              </select>
+              <!-- <span class="slight">
+                <i class="fa fa-play fa-rotate-90"></i>
+              </span> -->
+            </div>
+            <div *ngIf="submitted && f.course.errors" class="invalid-feedback">
+              <div *ngIf="f.course.errors.required">Course is required</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="form-group">
+                <label>Start Date
+                  <span>*</span>
+                </label>
+                <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [min]="minDate" formControlName="startDate" placeholder="Select start date"
+                class="form-control" [(ngModel)]="user.start_date">
+              <owl-date-time #dt pickerType="calendar"></owl-date-time>
+              <!-- <i class="fa fa-calendar"></i> -->
+              </div>
+              <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                  <label>End Date
+                    <span>*</span>
+                  </label>
+                  <input [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [min]="minDate" formControlName="endDate" placeholder="Select End date"
+                  class="form-control" [(ngModel)]="user.end_date">
+                <owl-date-time #dt1 pickerType="calendar"></owl-date-time>
+                <!-- <i class="fa fa-calendar"></i> -->
+                </div>
+                <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                  <div *ngIf="f.endDate.errors.required">End Date is required</div>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 add_btn_box">
+          <button type="submit" class="com_btn">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>Submit</button>
+          <a class="com_btn can_btn" (click)="clear()">
+            <i class="fa fa-eraser" aria-hidden="true"></i>Cancel</a>
+        </div>
+      </div>
+    </form>
+  </section>
+  <section class="user_tbl_wrapp">
+    <div class="top_tab_sec">
+      <span class="user_tab active_user">
+        <a></a>Batch</span>
+    </div>
+    <div class="table_wrapper">
+      <div class="serch_section">
+        <div class="row">
+          <div class="col-md-4 lt_sear">
+            <h4>Batch List</h4>
+          </div>
+          <div class="col-md-8 rt_sear">
+            <div class="row">
+              <div class="pull_serch">
+                <div class="col-md-4 rt_here">
+                  <div class="sear_wrap">
+                    <input type="text" placeholder="Enter Search Here..." name="test" [(ngModel)]="searchuser1"
+                      (ngModelChange)="searchBatch(searchuser1)" class="form-control" />
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comm_tble">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th width="40%">Name</th>
+                <th width="15%">Course</th>
+                <th width="15%">Start Date</th>
+                <th width="15%">End Date</th>
+                <th width="8%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of clientList | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>
+                  <span>{{item.name}}</span>
+                </td>
+                <td>{{item.course_name}}</td>
+                  <td>
+                      <span>{{item.start_date}}</span>
+                    </td>
+                    <td>
+                        <span>{{item.end_date}}</span>
+                      </td>
+                <td>
+                  <button class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Edit" (click)="getBatchById(item.id)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="left" title="Delete"
+                    (click)="deleteBatch(item.id)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" maxSize="10"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,66 @@
+<section class="middle-inn-wrap">
+  <h3 class="wel-kids">Welcome to Lexicon</h3>
+  <div class="mid-section wel_section">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="course-box">
+          <h3 class="my-kids">My Courses - {{courseName}}</h3>
+          <div class="course-detail-wrapper">
+            <div class="course-table-wrapp">
+              <div class="table-responsive">
+                
+                <table class="table cours_table_set">
+                  <thead>
+                    <tr>
+                    <th width="20%">Topics</th>
+                    <th width="50%">Completed</th>
+                    <th width="30%">Practice Index</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of topicData | paginate: { itemsPerPage: 10, currentPage: p }" >
+                    <td><span class="top_hover" [routerLink]="['/course/vocabulary', item.id]" (click)="mainservice.topicName = item.name;mainservice.courseName=courseName" >{{item.name}}</span></td>
+                    <td>
+                      <!-- <div class="progress"> -->
+                        <progress-bar [progress]="item.progress" [color-degraded]="{'0': '#dedede', '19': '#f12020', '39': '#e7490b', '59': '#22cf4b', '79': '#0d7ced', '100': '#0d7ced'}">
+                        </progress-bar>
+                      <!-- </div> -->
+                    </td>
+                    <td>
+                      <span class="excellent" *ngIf="item.score >= 0.80" >
+                        <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                        Excellent
+                      </span>
+                      <span class="good" *ngIf="item.score >= 0.60 && item.score <= 0.79">
+                        <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                        Good
+                      </span>
+                      <span class="avg" *ngIf="item.score >= 0.40 && item.score <= 0.59">
+                        <img src="../../../assets/img/excellent.png" title="Excellent"/>
+                        Average
+                      </span>
+                      <span class="weak" *ngIf="item.score > 0.20 && item.score <= 0.39">
+                        <img src="../../../assets/img/weak.png" title="Excellent"/>
+                        Weak
+                      </span>
+                      <span class="improve" *ngIf="item.score <= 0.20 && item.progress > 80">
+                        <img src="../../../assets/img/weak.png" title="Excellent"/>
+                        Need to Improve
+                      </span>
+                      <span class="improve" *ngIf="item.progress <= 80 && item.score < 0.01">
+                        <img src="../../../assets/img/weak.png" title="Excellent"/>
+                        Need to start
+                      </span>
+                    </td>
+                    </tr>
+                    </tbody>
+                 </table>
+                 <pagination-controls (pageChange)="p = $event" maxSize="10"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>	

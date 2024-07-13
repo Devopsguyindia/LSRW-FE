@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">
+		<div class="logo_inn"><a routerLink="/school/dashboard"><img src="assets/img/main_logo.png" alt="" title="Lexicon" /></a></div>
+	</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/school/dashboard" *ngIf="mainservice.sidebarFlag == 2"><img src="assets/img/dashb_ico_wht.png">Dashboard</a>
+      <a mat-list-item routerLink="/school/student" *ngIf="mainservice.sidebarFlag == 2"><img src="assets/img/user_ico_wht.png">Student</a>
+      <a mat-list-item routerLink="/school/teacher" *ngIf="mainservice.sidebarFlag == 2"><img src="assets/img/user_ico_wht.png">Teacher</a>
+      <a mat-list-item routerLink="/school/batch" *ngIf="mainservice.sidebarFlag == 3"><img src="assets/img/user_ico_wht.png">Batch</a>
+      <a mat-list-item routerLink="/school/batch-enrollment" *ngIf="mainservice.sidebarFlag == 3"><img src="assets/img/user_ico_wht.png">Batch Enrollment</a>
+      <a mat-list-item routerLink="/school/batch-list" *ngIf="mainservice.sidebarFlag == 3"><img src="assets/img/user_ico_wht.png">Batch List</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="sec_top_wrapp">
+		<div class="user_name" *ngIf="mainservice.loginFlag">{{mainservice.userName}}</div>
+		<div class="logout_btn" *ngIf="mainservice.loginFlag"><button (click)="logout()"><i class="fa fa-sign-out"></i>Logout</button></div>
+	  </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

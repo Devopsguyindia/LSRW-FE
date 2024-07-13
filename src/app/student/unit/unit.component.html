@@ -1,0 +1,71 @@
+<div class="col-md-9 rt-section-qu">
+  <div class="rt-quest-wrapp">
+    <div class="match_name_wrapp">
+      <div class="row">
+        <div class="col-md-5">
+          <!-- <div class="mat-name">{{questions}}</div> -->
+        </div>
+        <div class="col-md-7">
+          <div class="match-wrapp">
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'hi-IN'}" data-toggle="tooltip" (click)="mainservice.language_code = 'hi-IN';mainservice.voice_code='Google हिन्दी'"
+                data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/india-flag-round-icon-64.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-GB'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-GB';mainservice.voice_code='Google UK English Female'"
+                data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/match-flag1.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-US'}" data-toggle="tooltip" (click)="mainservice.language_code = 'en-US';mainservice.voice_code='Google US English'"
+                data-placement="top" title="" data-original-title="USA">
+                <img alt="" src="../../../assets/img/match-flag2.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir last-two">
+              <a class="active-match" data-toggle="tooltip" data-placement="top" title="" data-original-title="Audio">
+                <img alt="" src="../../../assets/img/audio-match.png" title="Index">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 0.7">
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.7}" data-placement="top" title="" (click)="snell = 1"
+                data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 1">
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.3}" data-placement="top" title="" (click)="snell = 1 - 0.3"
+                data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item of cardData" class="col-md-6">
+      <div>
+        <div class="quest-inner coupractpage">
+          <!-- <h3 class="quest-head">{{item.content.q_text}}</h3> -->
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check box_display">
+                <div class="col-md-12">
+                  <div class="quest-check-inner">
+                    <div class="rt_chk">
+                      <a [routerLink]="['/course/grammer', mainservice.urlId, item.unit_id]">
+                        {{item.unit_name}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

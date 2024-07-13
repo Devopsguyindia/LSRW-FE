@@ -1,0 +1,44 @@
+<section class="header-section">
+  <div class="row">
+    <div class="col-md-3 logo-sec">
+      <div class="head-logo">
+        <img alt="" src="../../../assets/img/white_logo.png" title="Lexicon">
+      </div>
+    </div>
+    <div class="col-md-9 rt-top-sec">
+      <div class="top-sec-wrapp">
+        <div class="dashboard-sec">
+          <div class="dash-inn">
+            <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+              <img alt="" src="../../../assets/img/dash-board.png" title="Dashboard">
+            </a>
+          </div>
+        </div>
+        <div class="welcome-sec">
+          <div class="dropdown navbar_pro_dropdown_set">
+            <div class="profil_header_img" [ngStyle]="{'background-image':'url(' + templateUrl + ''+mainservice.logoFile+')'}"></div>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+              <div class="header_profile_drop_down">
+                <div class="profil_details">
+                  <small>Welcome</small>
+                  <span>{{userName}}</span>
+                </div>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+              </div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="">My Account</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="logout-sec">
+          <div class="logout-inn">
+            <button type="button" (click)="mainservice.logout()" >
+              <img alt="" src="../../../assets/img/logout.png" title="Logout">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1647 @@
+<div class="col-md-9 rt-section-qu">
+  <div class="rt-quest-wrapp">
+    <div class="match_name_wrapp">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="mat-name">{{questions}}</div>
+        </div>
+        <div class="col-md-7">
+          <div class="match-wrapp">
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'hi-IN'}" data-toggle="tooltip"
+                (click)="mainservice.language_code = 'hi-IN';mainservice.voice_code='Google हिन्दी'"
+                data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/india-flag-round-icon-64.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-GB'}" data-toggle="tooltip"
+                (click)="mainservice.language_code = 'en-GB';mainservice.voice_code='Google UK English Female'"
+                data-placement="top" title="" data-original-title="England">
+                <img alt="" src="../../../assets/img/match-flag1.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir">
+              <a [ngClass]="{'active_flag': mainservice.language_code == 'en-US'}" data-toggle="tooltip"
+                (click)="mainservice.language_code = 'en-US';mainservice.voice_code='Google US English'"
+                data-placement="top" title="" data-original-title="USA">
+                <img alt="" src="../../../assets/img/match-flag2.png" title="Flag">
+              </a>
+            </div>
+            <div class="match-cir last-two">
+              <a class="active-match" data-toggle="tooltip" data-placement="top" title="" data-original-title="Audio">
+                <img alt="" src="../../../assets/img/audio-match.png" title="Index">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 0.7">
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.7}" data-placement="top" title=""
+                (click)="snell = 1" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+            <div class="match-cir last-two" *ngIf="snell == 1">
+              <a data-toggle="tooltip" [ngClass]="{'active-match': snell == 0.3}" data-placement="top" title=""
+                (click)="snell = 1 - 0.3" data-original-title="Match Audio">
+                <img alt="" src="../../../assets/img/match-pair.png" title="Snell">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item of cardData; index as i;" >
+      <div *ngIf="i == count">
+        <div class="quest-inner coupractpage" *ngIf="item.card_type_id == 1">
+          <h3 class="quest-head">{{item.content.q_text}}</h3>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 2">
+          <h3 class="quest-head">{{item.content.q_text}}</h3>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check-img">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option1, i)">
+                      <!-- <div class="thumb-quest">1.</div> -->
+                      <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option1 + ')'}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option2, i)">
+                      <!-- <div class="thumb-quest">2.</div> -->
+                      <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option2 + ')'}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option3, i)">
+                      <!-- <div class="thumb-quest">3.</div> -->
+                      <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option3 + ')'}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option4, i)">
+                      <!-- <div class="thumb-quest">3.</div> -->
+                      <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option4 + ')'}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 3">
+          <div class="ques_two-inner">
+            <div class="listen-wrapp">
+              <div class="list-audio-wrapp">
+                <button class="send-btn" (click)="textToSpeech(item.content.sentence)"><img alt="" src="../../../assets/img/audio_nat.png"
+                    title=""></button>
+                    <button class="send-btn" (click)="item.showSentence=!item.showSentence;"><i
+                        class="fa fa-info" aria-hidden="true"></i></button>
+                  <div class="quest-head" *ngIf="item.showSentence" >{{item.content.sentence}}</div>
+                <progress-bar [progress]="ttsProgress" [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+                </progress-bar>
+              </div>
+              <div class="ques-head">
+                <button class="send-btn" (click)="item.content.answer='';item.correct='';item.wrong='';"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+              </div>
+              <div class="list-answer-wrapp">
+                <h3>enter your answers</h3>
+                <div class="answr-box-audio">
+                  <div class="quest-check-inner-listen">
+                    <div class="answ_chk">
+                      <input class="quest-check-inner" type="text" [(ngModel)]="item.content.answer">
+                    </div>
+                    <div class="answ_chk_rt" *ngIf="item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="answ_chk_rt_wrong new_test" *ngIf="item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <div class="play-audio-sec">
+                    <button class="send-btn"
+                      (click)="checkTextToSpeech(item.content.answer, item.content.sentence, i)"><i
+                        class="fa fa-check-circle-o" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 4">
+          <div class="ques_two-inner">
+            <div class="listen-wrapp">
+              <div class="list-audio-wrapp">
+                <button class="send-btn" (click)="textToSpeech(item.content.sentence)"><img alt="" src="../../../assets/img/audio_nat.png"
+                    title=""></button>
+                      <button class="send-btn" (click)="item.showSentence=!item.showSentence;"><i
+                        class="fa fa-check-circle-o" aria-hidden="true"></i></button>
+                  <div class="quest-head" *ngIf="item.showSentence" >{{item.content.sentence}}</div>
+                <progress-bar [progress]="ttsProgress" [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+                </progress-bar>
+              </div>
+              <div class="ques-head">
+                <button class="send-btn" (click)="item.content.answer='';item.correct='';item.wrong='';"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+              </div>
+              <div class="list-answer-wrapp">
+                <h3>enter your answers</h3>
+                <div class="answr-box-audio">
+                  <div class="quest-check-inner-listen">
+                    <div class="answ_chk">
+                      <input class="quest-check-inner" type="text" [(ngModel)]="item.content.answer" readonly>
+                    </div>
+                    <div class="answ_chk_rt" *ngIf="item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="answ_chk_rt_wrong" *ngIf="item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <div class="play-audio-sec">
+                    <button class="send-btn" (click)="voiceToText(i, item.content.sentence)"><img 
+                        alt="" src="../../../assets/img/list_audio.png" title="Check"></button>
+                  </div>
+                  <!-- <div class="play-audio-sec">
+                      <button class="send-btn" (click)="voiceToText(i, item.content.sentence)"><i class="fa fa-check-circle-o"
+                          aria-hidden="true"></i></button>
+                    </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 5">
+          <h3 class="quest-head">{{item.content.answer.join(' ')}} <div class="answ_chk_rt" *ngIf="item.correct">
+              <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="answ_chk_rt_wrong" *ngIf="item.wrong">
+              <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+            </div>
+          </h3>
+          <div class="quest-head" *ngIf="item.content.answer.length == item.content.sentence.split(' ').length">
+            <button class="send-btn" (click)="checkSentence(i)"><img alt="" src="../../../assets/img/audio_nat.png"
+                title=""></button>
+          </div>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.content.answer = [];item.correct='';item.wrong='';"><i
+                class="fa fa-refresh" aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngFor="let item1 of item.content.words; index as i1">
+                  <div class="quest-check-inner">
+                    <div class="rt_chk" (click)="MakeSentence(item1, i, i1)">
+                      {{item1}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 6">
+          <h3 class="quest-head" *ngIf="item.content.q_text && !item.content.q_text1">{{item.content.q_text}}</h3>
+          <h3 class="quest-head" *ngIf="item.content.q_text1">{{item.content.q_text1}}</h3>
+          <div class="quest-head">
+            <button class="send-btn"
+              (click)="item.content.q_text1='';item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 7">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.q_text}}</div>
+                    <div class="quest-head">
+                      <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i
+                          class="fa fa-refresh" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="ques-head">Answers</div>
+                  <div class="blank-answe-box" *ngIf="item.content.option1">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option1, i)">
+                        {{item.content.option1}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option2">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option2, i)">
+                        {{item.content.option2}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option3">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option3, i)">
+                        {{item.content.option3}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option4">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option4, i)">
+                        {{item.content.option4}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 8">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.q_text}}</div>
+                    <div class="quest-head">
+                      <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i
+                          class="fa fa-refresh" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="ques-head">Answers</div>
+                  <div class="ques-head">&nbsp;</div>
+                  <div class="blank-answe-box" *ngIf="item.content.option1">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option1, i)">
+                        <!-- <div class="thumb-quest">1.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option1 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option2">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option2, i)">
+                        <!-- <div class="thumb-quest">3.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option2 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option3">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option3, i)">
+                        <!-- <div class="thumb-quest">3.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option3 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option4">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns1(item.content.answer, item.content.option4, i)">
+                        <!-- <div class="thumb-quest">4.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option4 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 9">
+          <div class="ques_two-inner two_chat_wrapper">
+            <div class="col-md-6">
+              <div class="conversation-wrapp">
+                <div class="conser-inner" *ngFor="let item2 of item.content[0]; index as i2;">
+                  <div class="conser-lt-chat-box" *ngIf="item2.lsentence">
+                    <div class="lt_cht_name">{{item2.lname}}</div>
+                    <div class="conser-lt-chat-txt" [ngClass]="{'act_chat_green': item2.act_sen}">
+                      {{item2.lsentence}}
+                      <span><img src="../../../assets/img/lt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-lt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.lImg + ')'}"></span>
+                    </div>
+                  </div>
+                  <div class="conser-rt-chat-box" *ngIf="item2.rsentence">
+                    <div class="rt_cht_name">{{item2.rname}}</div>
+                    <div class="conser-rt-chat-txt" [ngClass]="{'act_chat_blue': item2.act_sen1}">
+                      {{item2.rsentence}}
+                      <span><img src="../../../assets/img/rt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-rt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.rImg + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat_inner_all">
+                  <!-- <input type="text" class="form-control" placeholder="Enter Text..." > -->
+                  <button class="send-btn" (click)="conversation(item.content[0][0], i)"><img alt=""
+                      src="../../../assets/img/audio_nat.png" title=""></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="conversation-wrapp">
+                <div class="conser-inner" *ngFor="let item2 of item.content[1]; index as i2;">
+                  <div class="conser-lt-chat-box" *ngIf="item2.lsentence">
+                    <div class="lt_cht_name">{{item2.lname}}</div>
+                    <div class="conser-lt-chat-txt" [ngClass]="{'act_chat_green': item2.act_sen}">
+                      {{item2.lsentence}}
+                      <span><img src="../../../assets/img/lt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-lt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.lImg + ')'}"></span>
+                    </div>
+                  </div>
+                  <div class="conser-rt-chat-box">
+                    <div class="rt_cht_name">{{item2.rname}}</div>
+                    <div class="conser-rt-chat-txt" [ngClass]="{'act_green': item2.correct, 'act_red': item2.wrong, 'act_chat_blue': item2.act_sen1}">
+                      {{item2.rsentence}}
+                      <div class="lt_chk" *ngIf="item2.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong" *ngIf="item2.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="conver-rt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.rImg + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="three_wrapp_btn">
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="conversation1(item.content[1][0], i)"><img alt=""
+                        src="../../../assets/img/audio_nat.png" title=""></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="speakConvsersation(i, convCount)"><img alt=""
+                        src="../../../assets/img/list_audio.png" title="Check"></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="resetConv(i)"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="stopConv=false"><i class="fa fa-pause" aria-hidden="true"></i></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="checkConversation(i)"><i class="fa fa-check-circle-o"
+                        aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 10">
+          <div class="ques_two-inner two_chat_wrapper">
+            <div class="col-md-6">
+              <div class="conversation-wrapp">
+                <div class="conser-inner" *ngFor="let item2 of item.content[0]; index as i2;">
+                  <div class="conser-lt-chat-box" *ngIf="item2.lsentence">
+                    <div class="lt_cht_name">{{item2.lname}}</div>
+                    <div class="conser-lt-chat-txt" [ngClass]="{'act_chat_green': item2.act_sen}">
+                      {{item2.lsentence}}
+                      <span><img src="../../../assets/img/lt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-lt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.lImg + ')'}"></span>
+                    </div>
+                  </div>
+                  <div class="conser-rt-chat-box" *ngIf="item2.rsentence">
+                    <div class="rt_cht_name">{{item2.rname}}</div>
+                    <div class="conser-rt-chat-txt" [ngClass]="{'act_chat_blue': item2.act_sen1}">
+                      {{item2.rsentence}}
+                      <span><img src="../../../assets/img/rt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-rt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.rImg + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat_inner_all">
+                  <button class="send-btn" (click)="conversation(item.content[0][0], i)"><img alt=""
+                      src="../../../assets/img/audio_nat.png" title=""></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="conversation-wrapp">
+                <div class="conser-inner" *ngFor="let item2 of item.content[1]; index as i2;">
+                  <div class="conser-lt-chat-box" *ngIf="item2.lsentence">
+                    <div class="lt_cht_name">{{item2.lname}}</div>
+                    <div class="conser-lt-chat-txt" [ngClass]="{'act_green': item2.correct, 'act_red': item2.wrong, 'act_chat_green': item2.act_sen}">
+                      {{item2.lsentence}}
+                      <span><img src="../../../assets/img/lt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-lt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.lImg + ')'}"></span>
+                    </div>
+                  </div>
+                  <div class="conser-rt-chat-box" *ngIf="item2.rsentence">
+                    <div class="rt_cht_name">{{item2.rname}}</div>
+                    <div class="conser-rt-chat-txt" [ngClass]="{'act_chat_blue': item2.act_sen1}">
+                      <div *ngIf="item2.rsentence1">{{item2.rsentence1}}</div>
+                      <div *ngIf="!item2.rsentence1">{{item2.rsentence}}</div>
+                      <div class="lt_chk" *ngIf="item2.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong" *ngIf="item2.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <span><img src="../../../assets/img/rt-arrow-chat.png" /></span>
+                    </div>
+                    <div class="conver-rt-img">
+                      <span class="chat_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item2.rImg + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="three_wrapp_btn">
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="conversation1(item.content[1][0], i)"><img alt=""
+                        src="../../../assets/img/audio_nat.png" title=""></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="resetConvorsation(i)"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="checkWordConversation(i)"><i class="fa fa-check-circle-o"
+                        aria-hidden="true"></i></button>
+                  </div>
+                  <div class="chat_inner_all">
+                    <button class="send-btn" (click)="stopConv=false"><i class="fa fa-pause" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                <div class="am_wrapp">
+                  <div class="blank-answe-box" *ngFor="let item3 of item.content[2]; index as i3;">
+                    <div class="new_box" (click)="wordConversation(i, convCount1, item3)">
+                      {{item3}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 11">
+          <h3 class="quest-head"></h3>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="matc_box_sec">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="quest-check-inner" *ngFor="let item1 of item.content[0]; index as i1">
+                        <div (click)="lword = item1.lword;item1.clickActive = true;">
+                          <h5 [ngClass]="{'blue_txt_pair':item1.clickActive}">{{item1.lword}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngFor="let item1 of item.content[1]; index as i2">
+                      <div class="quest-check-inner" (click)="checkMatchThePair(lword, item1.answer, i2, i)"
+                        [ngClass]="{'act_green': item1.correct, 'act_red': item1.wrong}">
+                        <div class="lt_chk" *ngIf="item1.correct">
+                          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="lt_chk_wrong" *ngIf="item1.wrong">
+                          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <h5>{{item1.rword}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--new design-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 12">
+          <div class="list-audio-wrapp">
+            <div class="ques-head">{{item.content.q_text}}</div>
+            <button class="send-btn" (click)="textToSpeech(item.content.q_audio)"><img alt=""
+                src="../../../assets/img/audio_nat.png" title=""></button>
+            <progress-bar [progress]="ttsProgress"
+              [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+            </progress-bar>
+          </div>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 13">
+          <h3 class="quest-head" *ngIf="cnt == 0">{{item.content.q_text}}</h3>
+          <h3 class="quest-head" *ngIf="cnt == 1">{{item.content.q_text.join(' ')}}</h3>
+          <div class="quest-head">
+            <button class="send-btn"
+              (click)="cnt=0;item.content.q_text=new2Var;item.selected='';item.correct='';item.wrong='';"><i
+                class="fa fa-refresh" aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultipleFillAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultipleFillAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultipleFillAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultipleFillAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="lt_chk" *ngIf="item.correct">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </div>
+                  <div class="lt_chk_wrong" *ngIf="item.wrong">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                  </div>
+                  <button class="send-btn" (click)="ansCheck(i)"><i class="fa fa-check-circle-o"
+                      aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 14">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.q_text}}</div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.description}}</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="ques-head">Answers</div>
+                  <div class="blank-answe-box" *ngIf="item.content.option1">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option1, i)">
+                        {{item.content.option1}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option2">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option2, i)">
+                        {{item.content.option2}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option3">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option3, i)">
+                        {{item.content.option3}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option4">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk" (click)="checkFillAns(item.content.answer, item.content.option4, i)">
+                        {{item.content.option4}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 15">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.q_text}}</div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.description}}</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="ques-head">Answers</div>
+                  <div class="ques-head">&nbsp;</div>
+                  <div class="blank-answe-box" *ngIf="item.content.option1">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns(item.content.answer, item.content.option1, i)">
+                        <!-- <div class="thumb-quest">1.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option1 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option2">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns(item.content.answer, item.content.option2, i)">
+                        <!-- <div class="thumb-quest">3.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option2 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option3">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns(item.content.answer, item.content.option3, i)">
+                        <!-- <div class="thumb-quest">3.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option3 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blank-answe-box" *ngIf="item.content.option4">
+                    <div class="quest-check-inner"
+                      [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                      <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="lt_chk_wrong"
+                        *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      </div>
+                      <div class="rt_chk thum-box" (click)="checkAns(item.content.answer, item.content.option4, i)">
+                        <!-- <div class="thumb-quest">4.</div> -->
+                        <div class="thumb-box"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.option4 + ')'}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner coupractpage" *ngIf="item.card_type_id == 16">
+          <h3 class="quest-head">{{item.content.description}}</h3>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 17">
+          <h3 class="quest-head">{{item.content.q_text}}</h3>
+          <h3 class="quest-head">{{item.content.answer.join('')}} <div class="answ_chk_rt" *ngIf="item.correct">
+              <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="answ_chk_rt_wrong" *ngIf="item.wrong">
+              <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+            </div>
+          </h3>
+          <div class="quest-head" *ngIf="item.content.answer.length == item.content.sentence.split('').length">
+            <button class="send-btn" (click)="checkSpelling(i)"><img alt="" src="../../../assets/img/audio_nat.png"
+                title=""></button>
+          </div>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.content.answer = [];item.correct='';item.wrong='';enableButton(i)"><i
+                class="fa fa-refresh" aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="">
+              <div class="quest-box-check">
+                <div class="am_wrapp">
+                  <div class="blank-answe-box" *ngFor="let item3 of item.content.words; index as i3;">
+                    <button class="new_box" [disabled]="item3.disButton == 1"
+                      (click)="MakeSentence(item3.letter, i, i3)">{{item3.letter}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 18">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.q_text}}</div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <h3 class="quest-head">{{item.content.answer.join('')}} <div class="answ_chk_rt" *ngIf="item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="answ_chk_rt_wrong" *ngIf="item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                  </h3>
+                  <div class="quest-head" *ngIf="item.content.answer.length == item.content.sentence.split('').length">
+                    <button class="send-btn" (click)="checkSpelling(i)"><img alt=""
+                        src="../../../assets/img/audio_nat.png" title=""></button>
+                  </div>
+                  <div class="quest-head">
+                    <button class="send-btn"
+                      (click)="item.content.answer = [];item.correct='';item.wrong='';enableButton(i)"><i
+                        class="fa fa-refresh" aria-hidden="true"></i></button>
+                  </div>
+                  <div class="ques_two-inner">
+                    <div class="row">
+                      <div class="quest-box-check">
+                        <div class="am_wrapp">
+                          <div class="blank-answe-box" *ngFor="let item3 of item.content.words; index as i3;">
+                            <!-- <div > -->
+                            <button class="new_box" [disabled]="item3.disButton == 1"
+                              (click)="MakeSentence(item3.letter, i, i3)">{{item3.letter}}</button>
+                            <!-- </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 19">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="blank-left-sec">
+                    <!-- <div class="ques-head">{{item.content.q_text}}</div> -->
+                    <div class="list-audio-wrapp">
+                      <button class="send-btn" (click)="textToSpeech(item.content.description)"><img alt=""
+                          src="../../../assets/img/audio_nat.png" title=""></button>
+                    </div>
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 20">
+          <div class="ques_two-inner">
+            <div class="blanks-wrapp">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="blank-left-sec">
+                    <div class="blank-image-wrapp">
+                      <span class="blank_img"
+                        [ngStyle]="{'background-image':'url(' + image_url + '' + item.content.q_image + ')'}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="blank-left-sec">
+                    <div class="ques-head">{{item.content.description}}</div>
+                  </div>
+                  <div class="list-audio-wrapp">
+                    <button class="send-btn" (click)="textToSpeech(item.content.description)"><img alt=""
+                        src="../../../assets/img/audio_nat.png" title=""></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner coupractpage" *ngIf="item.card_type_id == 21">
+          <h3 class="quest-head">{{item.content.q_text}}</h3>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner coupractpage" *ngIf="item.card_type_id == 22">
+          <div class="list-audio-wrapp">
+            <div class="ques-head">{{item.content.q_text}}</div>
+            <button class="send-btn" (click)="textToSpeech(item.content.q_audio)"><img alt=""
+                src="../../../assets/img/audio_nat.png" title=""></button>
+            <progress-bar [progress]="ttsProgress"
+              [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+            </progress-bar>
+          </div>
+          <div class="quest-head">
+            <button class="send-btn" (click)="item.selected='';item.correct='';item.wrong='';"><i class="fa fa-refresh"
+                aria-hidden="true"></i></button>
+          </div>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option1, i)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option2, i)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option3, i)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner"
+                    [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMultiAns(item.content.answer, item.content.option4, i)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner coupractpage" *ngIf="item.card_type_id == 23">
+          <h3 class="quest-head">{{item.content.q_text}}</h3>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="col-md-4" *ngIf="item.content.option1">
+                  <div class="quest-check-inner" [ngClass]="{'act_green': item.selected == item.content.option1.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option1.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option1.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option1.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMulipleSelectAns(item.content.answer, item.content.option1, i, item.card_type_id)">
+                      {{item.content.option1}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option2">
+                  <div class="quest-check-inner" [ngClass]="{'act_green': item.selected == item.content.option2.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option2.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option2.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option2.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMulipleSelectAns(item.content.answer, item.content.option2, i, item.card_type_id)">
+                      {{item.content.option2}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option3">
+                  <div class="quest-check-inner" [ngClass]="{'act_green': item.selected == item.content.option3.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option3.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option3.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option3.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMulipleSelectAns(item.content.answer, item.content.option3, i, item.card_type_id)">
+                      {{item.content.option3}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" *ngIf="item.content.option4">
+                  <div class="quest-check-inner" [ngClass]="{'act_green': item.selected == item.content.option4.toLowerCase() && item.correct, 'act_red': item.selected == item.content.option4.toLowerCase() && item.wrong}">
+                    <div class="lt_chk" *ngIf="item.selected == item.content.option4.toLowerCase() && item.correct">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="lt_chk_wrong" *ngIf="item.selected == item.content.option4.toLowerCase() && item.wrong">
+                      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="rt_chk" (click)="checkMulipleSelectAns(item.content.answer, item.content.option4, i, item.card_type_id)">
+                      {{item.content.option4}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 24">
+          <div class="ques_two-inner">																
+            
+            <!-- start Page HTML-->																
+            <div class="image_new_wrapp">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="image_wrapp">
+                    <img src="{{image_url}}{{item.content.q_image}}" />
+                  </div>
+                  <div class="list-audio-wrapp">
+                    <button class="send-btn" (click)="textToSpeech(item.content.q_audio)"><img alt=""
+                        src="../../../assets/img/audio_nat.png" title=""></button>
+                    <progress-bar [progress]="ttsProgress"
+                      [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+                    </progress-bar>
+                  </div>	
+                </div>
+                <div class="col-md-5 padd_zero">
+                  <div class="rt_example_wrapp">
+                    <p>
+                      {{item.content.q_text}}
+                    </p>
+                  </div>	
+                </div>	
+              </div>
+            </div>																
+            <!-- start Page HTML-->
+            
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 25">
+          <div class="ques_two-inner">																
+            
+            <!-- start Noun Title Page HTML-->																
+            <div class="noun_wrapp">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="noun_lt_sec">
+                    <div class="noun_bag_top">
+                      <h3>{{item.content.noun_description_title}}</h3>	
+                      <p>
+                        {{item.content.noun_description}}
+                      </p>
+                    </div>
+                    <div class="as_head">{{item.content.noun_as}}</div>
+                      <ul class="bunch_list">
+                        <li *ngFor="let item1 of item.content.noun_as_list; index as i1;">
+                          {{item1}}<div *ngIf="item.content.noun_as_list.length - 1 == i1">,</div>
+                        </li>
+                      </ul>
+                      <div class="list-audio-wrapp">
+                        <button class="send-btn" (click)="textToSpeech(item.content.q_audio)"><img alt=""
+                            src="../../../assets/img/audio_nat.png" title=""></button>
+                        <progress-bar [progress]="ttsProgress"
+                          [color-degraded]="{'0': '#dedede', '19': '#ff0000', '39': '#ff0000', '59': '#ff0000', '79': '#ff0000', '100': '#ff0000'}">
+                        </progress-bar>
+                      </div>	
+                    <div class="type_noun_wrapp">
+                      <div class="as_head">{{item.content.noun_type_title}} : </div>
+                      <div class="type_wrapp">
+                        <span>1) {{item.conetent.noun_collective}} :- </span>
+                        {{item.conetent.noun_collective_list}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 padd_zero">
+                  <div class="rt_example_wrapp">
+                    <h3>Example</h3>
+                    <div class="row">
+                      <div class="col-md-6 imgpdr" *ngFor="let item2 of item.content.image_list">
+                        <div class="exam-image-wrapp">
+                          <span class="example_img" [ngStyle]="{'background-image':'url(' + image_url + '' + item2 + ')'}"></span>
+                        </div>	
+                      </div>	
+                    </div>
+                  </div>	
+                </div>	
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 27">
+          <h3 class="quest-head"></h3>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="matc_box_sec">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="quest-check-inner" *ngFor="let item1 of item.content[0]; index as i1">
+                        <div (click)="lword = item1.lword;item1.clickActive = true;">
+                          <h5 [ngClass]="{'blue_txt_pair':item1.clickActive}">{{item1.lword}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngFor="let item1 of item.content[1]; index as i2">
+                      <div class="quest-check-inner" (click)="checkMatchThePair(lword, item1.answer, i2, i)"
+                        [ngClass]="{'act_green': item1.correct, 'act_red': item1.wrong}">
+                        <div class="lt_chk" *ngIf="item1.correct">
+                          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="lt_chk_wrong" *ngIf="item1.wrong">
+                          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item1.rword + ')'}"></span>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--new design-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quest-inner" *ngIf="item.card_type_id == 28">
+          <h3 class="quest-head"></h3>
+          <div class="ques_two-inner">
+            <div class="row">
+              <div class="quest-box-check">
+                <div class="matc_box_sec">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="quest-check-inner" *ngFor="let item1 of item.content[0]; index as i1">
+                        <div (click)="lword = item1.lword;item1.clickActive = true;">
+                          <div class="thumb-box" [ngClass]="{'blue_txt_pair':item1.clickActive}"><span class="thumb_img"
+                            [ngStyle]="{'background-image':'url(' + image_url + '' + item1.lword + ')'}"></span>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngFor="let item1 of item.content[1]; index as i2">
+                      <div class="quest-check-inner" (click)="checkMatchThePair(lword, item1.answer, i2, i)"
+                        [ngClass]="{'act_green': item1.correct, 'act_red': item1.wrong}">
+                        <div class="lt_chk" *ngIf="item1.correct">
+                          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="lt_chk_wrong" *ngIf="item1.wrong">
+                          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="thumb-box"><span class="thumb_img"
+                          [ngStyle]="{'background-image':'url(' + image_url + '' + item1.rword + ')'}"></span>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--new design-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagin_wrapper">
+    <div class="row">
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == 0}" [disabled]="count == 0"
+          (click)="count=count-1;subProgress()">Previous</button>
+      </div>
+      <div class="col-md-8">
+        <!-- <div class="slide-sec"><img src="../../../assets/img/next-slide1.png" /></div> -->
+        <progress-bar [progress]="progress" [color]="'#22cf4b'">
+        </progress-bar>
+      </div>
+      <div class="col-md-2">
+        <button class="page-btn" [ngClass]="{'disable-btn': count == cardData.length-1 || nextToggle}"
+          (click)="count=count+1;addProgress();" [disabled]="nextToggle" *ngIf="count != cardData.length-1">Next</button>
+      </div>
+      <div class="col-md-2">
+        <a class="page-btn" [routerLink]="['/course/unit', mainservice.urlId]"
+          *ngIf="count == cardData.length-1">Finish</a>
+      </div>
+    </div>
+  </div>
+</div>

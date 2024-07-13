@@ -1,0 +1,21 @@
+<div class="inner-wrapper">
+  <div class="main-wrapp-box">
+    <div class="main-wrapp-inner">
+      <div *ngIf="mainservice.loginFlag">
+      <app-s-header [userName]='mainservice.username' [logo]='mainservice.logoFile'></app-s-header>
+    </div>
+      <router-outlet>
+        <ng-http-loader 
+    [backgroundColor]="'#0d7ced'"
+    [spinner]="spinkit.skWave"
+    [debounceDelay]="100"
+    [minDuration]="300"
+    [extraDuration]="300">
+</ng-http-loader>
+      </router-outlet>
+      <div *ngIf="mainservice.loginFlag">
+      <app-s-footer></app-s-footer>
+    </div>
+    </div>
+  </div>
+</div>
